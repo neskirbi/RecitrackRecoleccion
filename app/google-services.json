@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "31734211930",
+    "project_id": "recitrack-trasnporte",
+    "storage_bucket": "recitrack-trasnporte.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:31734211930:android:f106a57ff6d4c66f057f63",
+        "android_client_info": {
+          "package_name": "com.recitrack.recitracktransporte"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "31734211930-88r27l8m0mlsgf838ofqm7d47t0v036i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxQrFYBfFoqbYfAaK27vC1kutsHZD7qrA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "31734211930-88r27l8m0mlsgf838ofqm7d47t0v036i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
