@@ -6,7 +6,7 @@ import android.os.Handler;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.app.recitracktransporte.Login.LoginView;
+import com.recitrack.recitrackrecoleccion.Login.LoginView;
 
 public class Portada extends AppCompatActivity {
 

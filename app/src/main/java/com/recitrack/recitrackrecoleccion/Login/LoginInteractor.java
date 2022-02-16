@@ -6,9 +6,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.StrictMode;
 import android.util.Log;
 
-import com.app.recitracktransporte.DB.DB;
-import com.app.recitracktransporte.Models.Vehiculo;
-import com.app.recitracktransporte.R;
+import com.recitrack.recitrackrecoleccion.DB.DB;
+import com.recitrack.recitrackrecoleccion.Models.Vehiculo;
+import com.recitrack.recitrackrecoleccion.R;
 
 import retrofit2.Call;
 import retrofit2.Callback;

@@ -17,8 +17,8 @@ import android.util.Log;
 
 import androidx.core.content.ContextCompat;
 
-import com.app.recitracktransporte.DB.DB;
-import com.app.recitracktransporte.Servicios.TrackingService;
+import com.recitrack.recitrackrecoleccion.DB.DB;
+import com.recitrack.recitrackrecoleccion.Servicios.TrackingService;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

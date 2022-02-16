@@ -4,7 +4,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
-import com.app.recitracktransporte.Metodos;
+import com.recitrack.recitrackrecoleccion.Metodos;
+
 
 public class Lanzador extends BroadcastReceiver {
     @Override

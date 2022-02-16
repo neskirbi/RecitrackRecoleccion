@@ -10,9 +10,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.app.recitracktransporte.Home.HomeView;
-import com.app.recitracktransporte.Metodos;
-import com.app.recitracktransporte.R;
+import com.recitrack.recitrackrecoleccion.Metodos;
+import com.recitrack.recitrackrecoleccion.R;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class LoginView extends AppCompatActivity implements Login.View {
@@ -47,7 +46,7 @@ public class LoginView extends AppCompatActivity implements Login.View {
     }
 
     public void LoginOK(){
-        startActivity(new Intent(context, HomeView.class));
+        //startActivity(new Intent(context, HomeView.class));
         finish();
     }
 

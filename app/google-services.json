@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "31734211930",
-    "project_id": "recitrack-trasnporte",
-    "storage_bucket": "recitrack-trasnporte.appspot.com"
+    "project_number": "589483118027",
+    "project_id": "recitrackrecoleccion",
+    "storage_bucket": "recitrackrecoleccion.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:31734211930:android:f106a57ff6d4c66f057f63",
+        "mobilesdk_app_id": "1:589483118027:android:dee89f95f431e3b1bfba4e",
         "android_client_info": {
-          "package_name": "com.recitrack.recitracktransporte"
+          "package_name": "com.recitrack.recitrackrecoleccion"
         }
       },
       "oauth_client": [
         {
-          "client_id": "31734211930-88r27l8m0mlsgf838ofqm7d47t0v036i.apps.googleusercontent.com",
+          "client_id": "589483118027-jrjl49jn4vfm9dn3ca3i3ppjtp9sdhlp.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBxQrFYBfFoqbYfAaK27vC1kutsHZD7qrA"
+          "current_key": "AIzaSyAtJNd2apmr-KAT12jIyO8wuSp_3BZP3Xg"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "31734211930-88r27l8m0mlsgf838ofqm7d47t0v036i.apps.googleusercontent.com",
+              "client_id": "589483118027-jrjl49jn4vfm9dn3ca3i3ppjtp9sdhlp.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

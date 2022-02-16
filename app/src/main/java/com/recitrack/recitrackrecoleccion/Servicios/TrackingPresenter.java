@@ -21,9 +21,9 @@ import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
 
-import com.app.recitracktransporte.DB.DB;
-import com.app.recitracktransporte.Metodos;
-import com.app.recitracktransporte.R;
+import com.recitrack.recitrackrecoleccion.DB.DB;
+import com.recitrack.recitrackrecoleccion.Metodos;
+import com.recitrack.recitrackrecoleccion.R;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
