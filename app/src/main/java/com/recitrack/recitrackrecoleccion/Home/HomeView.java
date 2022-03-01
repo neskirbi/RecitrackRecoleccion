@@ -24,7 +24,7 @@ public class HomeView extends AppCompatActivity implements Home.View {
 
     Button escanear;
     Metodos metodos;
-    TextView nombres,apellidos;
+    TextView nombre;
     HomePresenter homePresenter;
     Context context;
     View bottom_navigation;
@@ -40,10 +40,8 @@ public class HomeView extends AppCompatActivity implements Home.View {
         homePresenter=new HomePresenter(this,context);
         metodos=new Metodos(this);
 
-        nombres=findViewById(R.id.nombres);
-        apellidos=findViewById(R.id.apellidos);
-        nombres.setText(metodos.GetNombres());
-        apellidos.setText(metodos.GetApellidos());
+        nombre=findViewById(R.id.nombre);
+        nombre.setText(metodos.GetNombre());
         menu_salir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,8 +87,7 @@ public class HomeView extends AppCompatActivity implements Home.View {
         super.onResume();
 
         homePresenter.IniciarRastreoGPS();
-        if(metodos.Transportando()){
-        }
+
     }
 
     public void LogOut(){

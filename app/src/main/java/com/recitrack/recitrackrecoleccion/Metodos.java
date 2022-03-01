@@ -33,6 +33,15 @@ public class Metodos {
     }
 
 
+    public String GetUrl(){
+        if(BuildConfig.DEBUG){
+            return context.getResources().getString(R.string.base_url_debug);
+        }else{
+            return context.getResources().getString(R.string.base_url);
+        }
+
+    }
+
     public String GetUuid(){
         return UUID.randomUUID().toString().replace("-","");
     }
@@ -45,7 +54,7 @@ public class Metodos {
     public boolean ValidarLogin() {
         DB base = new DB(context);
         SQLiteDatabase db = base.getWritableDatabase();
-        Cursor c =  db.rawQuery("SELECT * from vehiculos ",null);
+        Cursor c =  db.rawQuery("SELECT * from recolectores ",null);
         int filas=c.getCount();
         db.close();
         if(filas>0){
@@ -57,27 +66,7 @@ public class Metodos {
     }
 
 
-    public boolean Transportando() {
-        try{
-            DB base = new DB(context);
-            SQLiteDatabase db = base.getWritableDatabase();
-            Cursor c =  db.rawQuery("SELECT * from citas ",null);
-            int filas=c.getCount();
-            db.close();
-            if(filas>0){
 
-                Log.i("Transportando",filas+"");
-                return true;
-            }
-            Log.i("Transportando",filas+"");
-            return false;
-        }catch (Exception e){
-            return false;
-        }
-
-
-
-    }
     public void PedirPermisoGPS(Activity view) {
 
         /*
@@ -196,18 +185,18 @@ public class Metodos {
     }
 
     @SuppressLint("Range")
-    public String GetNombres(){
+    public String GetNombre(){
         String nombres="";
         try {
             DB base = new DB(context);
             SQLiteDatabase db = base.getWritableDatabase();
 
-            Cursor c =  db.rawQuery("SELECT * from vehiculos ",null);
+            Cursor c =  db.rawQuery("SELECT * from recolectores ",null);
             c.moveToFirst();
             if(c.getCount()>0){
                 c.moveToFirst();
 
-                nombres=c.getString(c.getColumnIndex("nombres"));
+                nombres=c.getString(c.getColumnIndex("recolector"));
 
             }
             c.close();
@@ -218,35 +207,13 @@ public class Metodos {
     }
 
     @SuppressLint("Range")
-    public String GetApellidos(){
-        String apellidos="";
-        try {
-            DB base = new DB(context);
-            SQLiteDatabase db = base.getWritableDatabase();
-
-            Cursor c =  db.rawQuery("SELECT * from vehiculos ",null);
-            c.moveToFirst();
-            if(c.getCount()>0){
-                c.moveToFirst();
-
-                apellidos=c.getString(c.getColumnIndex("apellidos"));
-
-            }
-            c.close();
-            db.close();
-        }catch (Exception e){}
-
-        return apellidos;
-    }
-
-    @SuppressLint("Range")
-    public String GetIdVehiculo() {
+    public String GetIdRecolector() {
         String id_vehiculo="";
         try {
             DB base = new DB(context);
             SQLiteDatabase db = base.getWritableDatabase();
 
-            Cursor c =  db.rawQuery("SELECT * from vehiculos ",null);
+            Cursor c =  db.rawQuery("SELECT * from recolectores ",null);
             c.moveToFirst();
             if(c.getCount()>0){
                 c.moveToFirst();
@@ -273,24 +240,4 @@ public class Metodos {
 
     }
 
-    public String GetIdCita() {
-        String id="";
-        try {
-            DB base = new DB(context);
-            SQLiteDatabase db = base.getWritableDatabase();
-
-            Cursor c =  db.rawQuery("SELECT * from citas ",null);
-            c.moveToFirst();
-            if(c.getCount()>0){
-                c.moveToFirst();
-                id=c.getString(c.getColumnIndex("id"));
-            }
-            c.close();
-            db.close();
-        }catch (Exception e){
-
-            return "";
-        }
-        return id;
-    }
 }

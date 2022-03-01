@@ -6,6 +6,7 @@ import android.os.StrictMode;
 import android.util.Log;
 
 import com.recitrack.recitrackrecoleccion.DB.DB;
+import com.recitrack.recitrackrecoleccion.Metodos;
 import com.recitrack.recitrackrecoleccion.R;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -19,12 +20,14 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class TrackingInteractor implements Traking.Interactor {
+    Metodos metodos;
     private Context context;
     private TrackingPresenter trackingPresenter;
 
     public TrackingInteractor(Context context, TrackingPresenter trackingPresenter) {
         this.context = context;
         this.trackingPresenter = trackingPresenter;
+        metodos=new Metodos(context);
     }
 
     @Override
@@ -35,7 +38,7 @@ public class TrackingInteractor implements Traking.Interactor {
         StrictMode.setThreadPolicy(policy);
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(context.getResources().getString(R.string.base_url))
+                .baseUrl(metodos.GetUrl())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -43,19 +46,19 @@ public class TrackingInteractor implements Traking.Interactor {
 
         Call<JsonArray> call= cliente.SetCoordenadas(coordenadas);
 
+        Log.i("response",metodos.GetUrl()+"::::"+coordenadas+"");
+
         call.enqueue(new Callback<JsonArray>() {
             @Override
             public void onResponse(Call<JsonArray> call, Response<JsonArray> response) {
                 JsonArray body= response.body();
                 if(body!=null){
-
                     if(body.size()>0){
                         JsonObject j= body.get(0).getAsJsonObject();
                         if(j.has("Correcto")){
                             BorrarCoordenadas(porborrar);
                         }
                     }
-
 
                 }else{
 

@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.zxing.Result;
 import com.recitrack.recitrackrecoleccion.R;
+import com.recitrack.recitrackrecoleccion.Recoleccion.RecoleccionView;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
@@ -52,7 +53,7 @@ public class Scaner extends AppCompatActivity implements ZXingScannerView.Result
 
         Log.i("ScanerResponse","DescargaDatos view");
 
-        //startActivity(new Intent(this, TransporteView.class).putExtra("id",id[id.length-1]));
+        startActivity(new Intent(this, RecoleccionView.class).putExtra("id",id[id.length-1]));
         finish();
     }
 }

@@ -7,8 +7,8 @@ import android.os.StrictMode;
 import android.util.Log;
 
 import com.recitrack.recitrackrecoleccion.DB.DB;
-import com.recitrack.recitrackrecoleccion.Models.Vehiculo;
-import com.recitrack.recitrackrecoleccion.R;
+import com.recitrack.recitrackrecoleccion.Metodos;
+import com.recitrack.recitrackrecoleccion.Models.Recolector;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -19,9 +19,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class LoginInteractor implements Login.Model{
     private Login.Presenter presenter;
     Context context;
+    Metodos metodos;
     public LoginInteractor(Login.Presenter presenter, Context context){
         this.presenter=presenter;
         this.context=context;
+        metodos=new Metodos(context);
     }
     @Override
     public void Validar(String telefono,String pass) {
@@ -30,22 +32,22 @@ public class LoginInteractor implements Login.Model{
         StrictMode.setThreadPolicy(policy);
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(context.getResources().getString(R.string.base_url))
+                .baseUrl(metodos.GetUrl())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
         AdministradorInterface cliente=retrofit.create(AdministradorInterface.class);
 
-        Call<Vehiculo> call= cliente.getAdministrador(new Vehiculo("","","","","","","","","","",telefono,pass,"",""));
+        Call<Recolector> call= cliente.getAdministrador(new Recolector("","","","",telefono,pass,""));
 
-        call.enqueue(new Callback<Vehiculo>() {
+        call.enqueue(new Callback<Recolector>() {
             @Override
-            public void onResponse(Call<Vehiculo> call, Response<Vehiculo> response) {
-                Vehiculo body= response.body();
+            public void onResponse(Call<Recolector> call, Response<Recolector> response) {
+                Recolector body= response.body();
                 if(body!=null){
                     if(body.getError()==null && body.getId()!=null){
                         Log.i("Login",body.getId()+"");
-                        GuardarVehiculo(body);
+                        GuardarRecolector(body);
                     }else{
                         Log.i("Login",body.getError()+"");
                         presenter.Error(body.getError());
@@ -57,7 +59,7 @@ public class LoginInteractor implements Login.Model{
             }
 
             @Override
-            public void onFailure(Call<Vehiculo> call, Throwable t) {
+            public void onFailure(Call<Recolector> call, Throwable t) {
                 Log.i("Response",": Error"+t.getMessage());
                 presenter.Error("Error de conexion");
             }
@@ -66,27 +68,22 @@ public class LoginInteractor implements Login.Model{
 
     }
 
-    public void GuardarVehiculo(Vehiculo vehiculo) {
+    public void GuardarRecolector(Recolector recolector) {
         DB base = new DB(context);
         SQLiteDatabase db = base.getWritableDatabase();
         ContentValues grupo = new ContentValues();
 
-        grupo.put("id", vehiculo.getId());
-        grupo.put("id_empresatrasnporte", vehiculo.getId_empresatrasnporte());
-        grupo.put("vehiculo", vehiculo.getVehiculo());
-        grupo.put("marca", vehiculo.getMarca());
-        grupo.put("modelo", vehiculo.getModelo());
-        grupo.put("matricula", vehiculo.getMatricula());
-        grupo.put("combustible", vehiculo.getCombustible());
-        grupo.put("nombres", vehiculo.getNombres());
-        grupo.put("apellidos", vehiculo.getApellidos());
-        grupo.put("licencia", vehiculo.getLicencia());
-        grupo.put("telefono", vehiculo.getTelefono());
-        grupo.put("pass", vehiculo.getPass());
-        grupo.put("detalle", vehiculo.getDetalle());
+        grupo.put("id", recolector.getId());
+        grupo.put("id_planta", recolector.getId_planta());
+        grupo.put("recolector", recolector.getRecolector());
+        grupo.put("telefono", recolector.getTelefono());
+        grupo.put("pass", recolector.getPass());
+        grupo.put("mail", recolector.getMail());
 
 
-        db.insert("vehiculos", null, grupo);
+
+
+        db.insert("recolectores", null, grupo);
         db.close();
         presenter.LoginOk();
     }

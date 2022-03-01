@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class DB extends SQLiteOpenHelper {
-    private static String Vehiculos = "",Coordenadas = "",Citas = "";
+    private static String Recolectores = "",Coordenadas = "";
     private static  String DB_NAME = "Recitrack.sqlite";
     private static  int DB_VERSION = 1;
 
@@ -15,26 +15,19 @@ public class DB extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        Vehiculos= "CREATE TABLE IF NOT EXISTS  vehiculos(" +
+        Recolectores= "CREATE TABLE IF NOT EXISTS  recolectores(" +
                 "id text DEFAULT ''," +
-                "id_empresatrasnporte text DEFAULT ''," +
-                "vehiculo text DEFAULT ''," +
-                "marca text DEFAULT ''," +
-                "modelo text DEFAULT ''," +
-                "matricula text DEFAULT ''," +
-                "combustible text DEFAULT ''," +
-                "nombres text DEFAULT ''," +
-                "apellidos text DEFAULT ''," +
-                "licencia text DEFAULT ''," +
+                "id_planta text DEFAULT ''," +
+                "recolector text DEFAULT ''," +
                 "telefono text DEFAULT ''," +
                 "pass text DEFAULT ''," +
-                "detalle text DEFAULT '')"  ;
+                "mail text DEFAULT '')"  ;
 
-        sqLiteDatabase.execSQL(Vehiculos);
+        sqLiteDatabase.execSQL(Recolectores);
 
         Coordenadas= "CREATE TABLE IF NOT EXISTS  coordenadas(" +
                 "id text DEFAULT ''," +
-                "id_vehiculo text DEFAULT ''," +
+                "id_recolector text DEFAULT ''," +
                 "lat text DEFAULT ''," +
                 "lon text DEFAULT ''," +
                 "created_at text DEFAULT ''," +
@@ -42,14 +35,7 @@ public class DB extends SQLiteOpenHelper {
 
         sqLiteDatabase.execSQL(Coordenadas);
 
-        Citas= "CREATE TABLE IF NOT EXISTS  citas(" +
-                "id text DEFAULT ''," +
-                "obra text DEFAULT ''," +
-                "material text DEFAULT ''," +
-                "cantidad text DEFAULT ''," +
-                "planta text DEFAULT '')"  ;
 
-        sqLiteDatabase.execSQL(Citas);
 
 
     }

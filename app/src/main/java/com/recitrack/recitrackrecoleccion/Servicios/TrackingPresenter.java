@@ -146,7 +146,7 @@ public class TrackingPresenter implements Traking.Presenter{
         ContentValues grupo = new ContentValues();
 
         grupo.put("id", metodos.GetUuid());
-        grupo.put("id_vehiculo", metodos.GetIdVehiculo());
+        grupo.put("id_recolector", metodos.GetIdRecolector());
         grupo.put("lat", lat);
         grupo.put("lon", lon);
         grupo.put("created_at", metodos.GetDate());
@@ -220,8 +220,7 @@ public class TrackingPresenter implements Traking.Presenter{
                         }
                         JsonObject jsonObject=new JsonObject();
                         jsonObject.addProperty("id",c.getString(c.getColumnIndex("id")));
-                        jsonObject.addProperty("id_cita",metodos.GetIdCita());
-                        jsonObject.addProperty("id_vehiculo",c.getString(c.getColumnIndex("id_vehiculo")));
+                        jsonObject.addProperty("id_recolector",c.getString(c.getColumnIndex("id_recolector")));
                         jsonObject.addProperty("lat",c.getString(c.getColumnIndex("lat")));
                         jsonObject.addProperty("lon",c.getString(c.getColumnIndex("lon")));
                         jsonObject.addProperty("created_at",c.getString(c.getColumnIndex("created_at")));
