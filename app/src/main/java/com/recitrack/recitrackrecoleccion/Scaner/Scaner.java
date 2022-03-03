@@ -47,13 +47,11 @@ public class Scaner extends AppCompatActivity implements ZXingScannerView.Result
         // Si la descomentas no recomiendo que llames a finish
 //        escanerZXing.resumeCameraPreview(this);
         // Obener código/texto leído
-        String url = resultado.getText();
+        String datos = resultado.getText();
         // Cerrar la actividad. Ahora mira onActivityResult de MainActivity
-        String[] id = url.split("/");
 
-        Log.i("ScanerResponse","DescargaDatos view");
 
-        startActivity(new Intent(this, RecoleccionView.class).putExtra("id",id[id.length-1]));
+        startActivity(new Intent(this, RecoleccionView.class).putExtra("datos",datos));
         finish();
     }
 }
