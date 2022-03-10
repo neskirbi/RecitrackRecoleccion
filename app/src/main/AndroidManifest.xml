@@ -21,6 +21,9 @@
         android:theme="@style/Theme.RecitrackRecoleccion"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Registro.RegistroView"
+            android:exported="false" />
+        <activity
             android:name=".Recoleccion.RecoleccionView"
             android:exported="false" />
 
