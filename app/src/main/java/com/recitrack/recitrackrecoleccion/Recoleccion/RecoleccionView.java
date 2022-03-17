@@ -37,7 +37,7 @@ public class RecoleccionView extends AppCompatActivity implements Recoleccion.Vi
 
     public void Aceptar(View view){
         metodos.Vibrar(metodos.VibrarPush());
-        presenter.Aceptar(datosarray[1]);
+        presenter.Aceptar(datosarray);
     }
 
 

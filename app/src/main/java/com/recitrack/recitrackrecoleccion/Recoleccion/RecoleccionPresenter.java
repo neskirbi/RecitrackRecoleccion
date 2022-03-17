@@ -27,9 +27,9 @@ public class RecoleccionPresenter implements Recoleccion.Presenter {
     public void Error(String error) {
     }
 
-    @Override
-    public void Aceptar(String id) {
-        interactor.Aceptar(id);
+    public void Aceptar(String[] data) {
+        interactor.Aceptar(data);
     }
+
 
 }

@@ -13,12 +13,10 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.os.Vibrator;
-import android.util.Log;
 
 import androidx.core.content.ContextCompat;
 
 import com.recitrack.recitrackrecoleccion.DB.DB;
-import com.recitrack.recitrackrecoleccion.Servicios.TrackingService;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -65,6 +63,23 @@ public class Metodos {
 
     }
 
+    public boolean YaEsta(String id) {
+        DB base = new DB(context);
+        SQLiteDatabase db = base.getWritableDatabase();
+        Cursor c =  db.rawQuery("SELECT * from negocios where id='"+id+"' ",null);
+
+        if(c.getCount()>0){
+            return true;
+        }
+        if(c.getCount()==0){
+
+            return false;
+        }
+
+        return false;
+
+    }
+
 
 
     public void PedirPermisoGPS(Activity view) {
@@ -76,7 +91,7 @@ public class Metodos {
 
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N){
 
-            IniciarServicioTracking();
+            //IniciarServicioTracking();
         }
 
         /*
@@ -91,7 +106,7 @@ public class Metodos {
 
             if (location == PackageManager.PERMISSION_GRANTED ) {
 
-                IniciarServicioTracking();
+                //IniciarServicioTracking();
             } else {
 
                 view.requestPermissions(perms, permsRequestCode);
@@ -120,7 +135,7 @@ public class Metodos {
                 int location2 = context.checkSelfPermission(Manifest.permission.ACCESS_BACKGROUND_LOCATION);
 
                 if (location2 == PackageManager.PERMISSION_GRANTED ) {
-                    IniciarServicioTracking();
+                    //IniciarServicioTracking();
                 } else {
                     view.requestPermissions(perms2, permsRequestCode2);
                 }
@@ -138,7 +153,7 @@ public class Metodos {
 
     }
 
-    public void IniciarServicioTracking() {
+    /*public void IniciarServicioTracking() {
 
 
         if (!isMyServiceRunning(TrackingService.class, context)) {
@@ -154,12 +169,12 @@ public class Metodos {
 
 
         }
-    }
+    }*/
 
-    public void DetenerServicioTracking() {
+    /*public void DetenerServicioTracking() {
         Intent service1 = new Intent(context, TrackingService.class);
         context.stopService(service1);
-    }
+    }*/
 
     public boolean isMyServiceRunning(Class<?> serviceClass, Context context) {
         ActivityManager manager = (ActivityManager) context.getSystemService(ACTIVITY_SERVICE);

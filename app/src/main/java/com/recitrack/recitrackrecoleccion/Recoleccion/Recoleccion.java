@@ -13,10 +13,10 @@ public interface Recoleccion {
 
         void Error(String error_de_conexion);
 
-        void Aceptar(String id);
+        void Aceptar(String[] data);
 
     }
     interface Interactor{
-        void Aceptar(String id);
+        void Aceptar(String[] data);
     }
 }

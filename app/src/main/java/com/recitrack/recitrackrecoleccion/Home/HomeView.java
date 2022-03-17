@@ -86,12 +86,11 @@ public class HomeView extends AppCompatActivity implements Home.View {
     protected void onResume() {
         super.onResume();
 
-        homePresenter.IniciarRastreoGPS();
+        //homePresenter.IniciarRastreoGPS();
 
     }
 
     public void LogOut(){
-        metodos.DetenerServicioTracking();
         homePresenter.Salir();
     }
 
@@ -106,7 +105,6 @@ public class HomeView extends AppCompatActivity implements Home.View {
             int camara = checkSelfPermission(Manifest.permission.CAMERA);
 
             if (camara == PackageManager.PERMISSION_GRANTED ) {
-
                 startActivity(new Intent(this, Scaner.class));
             } else {
 
@@ -114,7 +112,6 @@ public class HomeView extends AppCompatActivity implements Home.View {
                 return false;
             }
 
-        }else{
         }
         return true;
     }

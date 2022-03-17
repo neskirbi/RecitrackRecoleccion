@@ -14,7 +14,6 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.recitrack.recitrackrecoleccion.Home.HomeView;
 import com.recitrack.recitrackrecoleccion.Metodos;
 import com.recitrack.recitrackrecoleccion.R;
-import com.recitrack.recitrackrecoleccion.Registro.RegistroView;
 
 public class LoginView extends AppCompatActivity implements Login.View {
 
@@ -47,10 +46,6 @@ public class LoginView extends AppCompatActivity implements Login.View {
         PedirPermisoGPS();
     }
 
-
-    public void Registrar(View view){
-        startActivity(new Intent(context, RegistroView.class));
-    }
 
     public void LoginOK(){
         startActivity(new Intent(context, HomeView.class));

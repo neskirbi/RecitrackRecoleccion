@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class DB extends SQLiteOpenHelper {
-    private static String Recolectores = "",Coordenadas = "";
+    private static String Recolectores = "",Coordenadas = "",Negocios="";
     private static  String DB_NAME = "Recitrack.sqlite";
     private static  int DB_VERSION = 1;
 
@@ -24,6 +24,14 @@ public class DB extends SQLiteOpenHelper {
                 "mail text DEFAULT '')"  ;
 
         sqLiteDatabase.execSQL(Recolectores);
+
+        Negocios= "CREATE TABLE IF NOT EXISTS  negocios(" +
+                "id text DEFAULT ''," +
+                "negocio text DEFAULT ''," +
+                "created_at text DEFAULT ''," +
+                "updated_at text DEFAULT '')"  ;
+
+        sqLiteDatabase.execSQL(Negocios);
 
         Coordenadas= "CREATE TABLE IF NOT EXISTS  coordenadas(" +
                 "id text DEFAULT ''," +

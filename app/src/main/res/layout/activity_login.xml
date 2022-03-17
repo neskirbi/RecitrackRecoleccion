@@ -39,7 +39,8 @@
                     android:id="@+id/telefono"
                     android:singleLine="true"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:phoneNumber="true"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -68,16 +69,7 @@
                 android:textSize="20dp"
                 android:textStyle="bold"
                 android:textColor="#fff" />
-            <TextView
-                android:onClick="Registrar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Registrar"
-                android:textColor="@color/purple_700"
-                android:layout_gravity="center_horizontal"
-                android:textSize="25dp"
-                android:textStyle="bold"
-                android:layout_marginTop="25dp"/>
+
 
 
         </LinearLayout>
