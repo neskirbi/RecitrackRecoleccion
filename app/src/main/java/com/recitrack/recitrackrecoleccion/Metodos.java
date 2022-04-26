@@ -15,6 +15,7 @@ import android.os.Build;
 import android.os.Vibrator;
 
 import androidx.core.content.ContextCompat;
+import androidx.viewbinding.BuildConfig;
 
 import com.recitrack.recitrackrecoleccion.DB.DB;
 
@@ -70,13 +71,10 @@ public class Metodos {
 
         if(c.getCount()>0){
             return true;
-        }
-        if(c.getCount()==0){
+        }else{
 
             return false;
         }
-
-        return false;
 
     }
 

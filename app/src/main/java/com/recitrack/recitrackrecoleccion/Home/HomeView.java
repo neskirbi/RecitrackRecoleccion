@@ -24,48 +24,17 @@ public class HomeView extends AppCompatActivity implements Home.View {
 
     Button escanear;
     Metodos metodos;
-    TextView nombre;
     HomePresenter homePresenter;
     Context context;
-    View bottom_navigation;
-    View menu_salir;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         escanear=findViewById(R.id.escanear);
-        bottom_navigation = findViewById(R.id.bottom_navigation);
-        menu_salir = bottom_navigation.findViewById(R.id.menu_salir);
         context=this;
         homePresenter=new HomePresenter(this,context);
         metodos=new Metodos(this);
 
-        nombre=findViewById(R.id.nombre);
-        nombre.setText(metodos.GetNombre());
-        menu_salir.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                MaterialAlertDialogBuilder builder=new MaterialAlertDialogBuilder(context);
-                builder.setTitle("Salir");
-                builder.setMessage("¿Esta seguro de salir de su cuenta?");
-                builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        metodos.Vibrar(metodos.VibrarPush());
-                        LogOut();
-                    }
-                });
-                builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        metodos.Vibrar(metodos.VibrarPush());
-                    }
-                });
-                builder.show();
-
-
-            }
-        });
 
 
     }

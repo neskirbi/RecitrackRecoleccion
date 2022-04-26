@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.textfield.TextInputLayout;
 import com.recitrack.recitrackrecoleccion.Home.HomeView;
+import com.recitrack.recitrackrecoleccion.Menu.MenuView;
 import com.recitrack.recitrackrecoleccion.Metodos;
 import com.recitrack.recitrackrecoleccion.R;
 
@@ -48,7 +49,7 @@ public class LoginView extends AppCompatActivity implements Login.View {
 
 
     public void LoginOK(){
-        startActivity(new Intent(context, HomeView.class));
+        startActivity(new Intent(context, MenuView.class));
         finish();
     }
 

@@ -6,18 +6,32 @@
         <entry key="..\:/Users/CSMX/Documents/AndroidStudio/RecitrackRecoleccion/app/src/main/res/drawable-v24/borde_punteado.xml" value="0.19166666666666668" />
         <entry key="..\:/Users/CSMX/Documents/AndroidStudio/RecitrackRecoleccion/app/src/main/res/drawable-v24/boton_azul.xml" value="0.1" />
         <entry key="..\:/Users/CSMX/Documents/AndroidStudio/RecitrackRecoleccion/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.19166666666666668" />
+        <entry key="..\:/Users/CSMX/Documents/AndroidStudio/RecitrackRecoleccion/app/src/main/res/drawable-v24/ic_menu_viajes.xml" value="0.19166666666666668" />
         <entry key="..\:/Users/CSMX/Documents/AndroidStudio/RecitrackRecoleccion/app/src/main/res/drawable-v24/menu_salir.xml" value="0.1" />
+        <entry key="..\:/Users/CSMX/Documents/AndroidStudio/RecitrackRecoleccion/app/src/main/res/drawable-v24/refresh.xml" value="0.19166666666666668" />
         <entry key="..\:/Users/CSMX/Documents/AndroidStudio/RecitrackRecoleccion/app/src/main/res/drawable-v24/round_border.xml" value="0.19166666666666668" />
+        <entry key="..\:/Users/CSMX/Documents/AndroidStudio/RecitrackRecoleccion/app/src/main/res/drawable/atras.xml" value="0.19166666666666668" />
         <entry key="..\:/Users/CSMX/Documents/AndroidStudio/RecitrackRecoleccion/app/src/main/res/drawable/cerrar.xml" value="0.19166666666666668" />
         <entry key="..\:/Users/CSMX/Documents/AndroidStudio/RecitrackRecoleccion/app/src/main/res/drawable/ic_launcher_background.xml" value="0.19166666666666668" />
+        <entry key="..\:/Users/CSMX/Documents/AndroidStudio/RecitrackRecoleccion/app/src/main/res/drawable/pu.xml" value="0.19166666666666668" />
+        <entry key="..\:/Users/CSMX/Documents/AndroidStudio/RecitrackRecoleccion/app/src/main/res/layout/activity_avance_view.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/CSMX/Documents/AndroidStudio/RecitrackRecoleccion/app/src/main/res/layout/activity_home.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/CSMX/Documents/AndroidStudio/RecitrackRecoleccion/app/src/main/res/layout/activity_login.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/CSMX/Documents/AndroidStudio/RecitrackRecoleccion/app/src/main/res/layout/activity_menu_view.xml" value="0.10371376811594203" />
         <entry key="..\:/Users/CSMX/Documents/AndroidStudio/RecitrackRecoleccion/app/src/main/res/layout/activity_portada.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/CSMX/Documents/AndroidStudio/RecitrackRecoleccion/app/src/main/res/layout/activity_recoleccion_view.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/CSMX/Documents/AndroidStudio/RecitrackRecoleccion/app/src/main/res/layout/activity_registro_view.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/CSMX/Documents/AndroidStudio/RecitrackRecoleccion/app/src/main/res/layout/activity_scaner.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/CSMX/Documents/AndroidStudio/RecitrackRecoleccion/app/src/main/res/layout/app_bar_menu_view.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/CSMX/Documents/AndroidStudio/RecitrackRecoleccion/app/src/main/res/layout/content_menu_view.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/CSMX/Documents/AndroidStudio/RecitrackRecoleccion/app/src/main/res/layout/fragment_home.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/CSMX/Documents/AndroidStudio/RecitrackRecoleccion/app/src/main/res/layout/item_historial.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/CSMX/Documents/AndroidStudio/RecitrackRecoleccion/app/src/main/res/layout/nav_header_menu_view.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/CSMX/Documents/AndroidStudio/RecitrackRecoleccion/app/src/main/res/menu/activity_main_drawer.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/CSMX/Documents/AndroidStudio/RecitrackRecoleccion/app/src/main/res/menu/menu_view.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/CSMX/Documents/AndroidStudio/RecitrackRecoleccion/app/src/main/res/menu/top_app_bar.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/CSMX/Documents/AndroidStudio/RecitrackRecoleccion/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
+        <entry key="..\:/Users/CSMX/Documents/AndroidStudio/RecitrackRecoleccion/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1" />
         <entry key="..\:/Users/CSMX/Documents/RecitrackRecoleccion/app/src/main/res/layout/activity_boleta.xml" value="0.1" />
         <entry key="..\:/Users/CSMX/Documents/RecitrackRecoleccion/app/src/main/res/layout/activity_home.xml" value="0.1" />
         <entry key="..\:/Users/CSMX/Documents/RecitrackRecoleccion/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.1" />
