@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
+import android.widget.DatePicker;
 import android.widget.TextView;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
@@ -31,7 +32,7 @@ import com.recitrack.recitrackrecoleccion.Metodos;
 import com.recitrack.recitrackrecoleccion.databinding.ActivityMenuViewBinding;
 import com.recitrack.recitrackrecoleccion.R;
 
-public class MenuView extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MenuView extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, com.recitrack.recitrackrecoleccion.Menu.Menu.MenuView {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMenuViewBinding binding;
@@ -39,15 +40,17 @@ public class MenuView extends AppCompatActivity implements NavigationView.OnNavi
     Context context;
     private NavigationView navigationView;
     private TextView nombre;
+    MenuPresenter menuPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         context=this;
         metodos=new Metodos(context);
+        ValidarLogin();
+        menuPresenter=new MenuPresenter(this,this);
         binding = ActivityMenuViewBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
         nombre=findViewById(R.id.nombres);
         nombre.setText(metodos.GetNombre());
         setSupportActionBar(binding.appBarMenuView.toolbar);
@@ -86,8 +89,6 @@ public class MenuView extends AppCompatActivity implements NavigationView.OnNavi
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
-        Log.i("manu",""+id);
-
 
 
         if(R.id.nav_registrar==id){
@@ -109,7 +110,7 @@ public class MenuView extends AppCompatActivity implements NavigationView.OnNavi
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     metodos.Vibrar(metodos.VibrarPush());
-                    Salir();
+                    menuPresenter.Salir();
                 }
             });
             builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
@@ -125,20 +126,19 @@ public class MenuView extends AppCompatActivity implements NavigationView.OnNavi
         return true;
     }
 
-    public void Salir() {
-
-        try {
-            DB base = new DB(context);
-            SQLiteDatabase db = base.getWritableDatabase();
-
-            db.execSQL("DELETE from vehiculos ");
-            db.close();
-        }catch (Exception e){}
 
 
-        startActivity(new Intent(context, LoginView.class));
-        finish();
 
+    public void ValidarLogin() {
+        if(!metodos.ValidarLogin()){
+            startActivity(new Intent(context, LoginView.class));
+            finish();
+        }
     }
 
+    @Override
+    public void IrAlLogin() {
+        startActivity(new Intent(context, LoginView.class));
+        finish();
+    }
 }

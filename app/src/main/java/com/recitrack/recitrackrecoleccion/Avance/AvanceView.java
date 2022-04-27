@@ -1,67 +1,122 @@
 package com.recitrack.recitrackrecoleccion.Avance;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
-import android.database.Cursor;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.DatePicker;
+import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import com.recitrack.recitrackrecoleccion.Adapters.AvanceAdapter;
+import com.recitrack.recitrackrecoleccion.BuildConfig;
 import com.recitrack.recitrackrecoleccion.DB.DB;
+import com.recitrack.recitrackrecoleccion.Home.HomeView;
+import com.recitrack.recitrackrecoleccion.Menu.MenuView;
+import com.recitrack.recitrackrecoleccion.Metodos;
 import com.recitrack.recitrackrecoleccion.R;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
-
-public class AvanceView extends AppCompatActivity {
+public class AvanceView extends AppCompatActivity implements Avance.AvanceView {
     private ListView listview;
-    JsonArray lista=new JsonArray();
 
     Context context;
+    AvancePresenter avancePresenter;
+    Metodos metodos;
+    DatePicker datePicker;
+    BottomNavigationView bottom_navigation;
+    LinearLayout fondo;
+    FloatingActionButton borrar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_avance_view);
-        listview = findViewById(R.id.lista_historial);
         context=this;
-        LlenarLista();
+        metodos=new Metodos(this);
+        avancePresenter=new AvancePresenter(this,this);
+        listview = findViewById(R.id.lista_historial);
+        bottom_navigation=findViewById(R.id.bottom_navigation);
+        datePicker=findViewById(R.id.datepicker);
+        fondo=findViewById(R.id.fondo);
+        borrar=findViewById(R.id.borrar);
+        avancePresenter.ObternerAvance(metodos.GetDate());
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            datePicker.setOnDateChangedListener(new DatePicker.OnDateChangedListener() {
+                @Override
+                public void onDateChanged(DatePicker datePicker, int year, int month, int day) {
+                    metodos.Vibrar(metodos.VibrarPush());
+                    avancePresenter.ObternerAvance(year+"-"+(month+1)+"-"+day);
+
+                    datePicker.setVisibility(View.GONE);
+                    fondo.setVisibility(View.GONE);
+                }
+            });
+        }
+
+
+        bottom_navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int id = item.getItemId();
+                metodos.Vibrar(metodos.VibrarPush());
+
+                Log.i("Bottom",id+"");
+                if(R.id.escanear==id){
+                   startActivity(new Intent(context, HomeView.class));
+                }
+
+
+                if(R.id.fecha==id){
+                    datePicker.setVisibility(View.VISIBLE);
+                    fondo.setVisibility(View.VISIBLE);
+                }
+
+                if(R.id.subir==id){
+                    avancePresenter.SubirDatos();
+                }
+                return false;
+            }
+        });
+
+        if(BuildConfig.DEBUG){
+            borrar.setVisibility(View.VISIBLE);
+            borrar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    metodos.Vibrar(metodos.VibrarPush());
+                    DesConfirmar();
+                }
+            });
+        }
     }
 
 
-    @SuppressLint("Range")
-    public void LlenarLista() {
-        String algo="";
-
-        DB base = new DB(context);
-        SQLiteDatabase db = base.getWritableDatabase();
-        Cursor c =  db.rawQuery("SELECT * from negocios  ",null);
-
-        c.moveToFirst();
-        if(c.getCount()>0){
-            Toast.makeText(context, "# "+c.getCount(), Toast.LENGTH_SHORT).show();
-
-            while(!c.isAfterLast()){
-                algo+=c.getString(c.getColumnIndex("negocio"));
-                JsonObject jsonObject=new JsonObject();
-                jsonObject.addProperty("negocio",c.getString(c.getColumnIndex("negocio")));
-                jsonObject.addProperty("fecha",c.getString(c.getColumnIndex("created_at")));
-                lista.add(jsonObject);
-                c.moveToNext();
-            }
-
-
-        }
-
+    @Override
+    public void LenarLista(JsonArray lista) {
         AvanceAdapter myAdapter = new AvanceAdapter(this, lista);
         listview.setAdapter(myAdapter);
-        Toast.makeText(context, ""+algo, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(context, MenuView.class));
+    }
+
+    void DesConfirmar() {
+        DB base = new DB(context);
+        SQLiteDatabase db = base.getWritableDatabase();
+        String strSQL = "UPDATE negocios SET uploaded = 0 ";
+        db.execSQL(strSQL);
+        avancePresenter.ObternerAvance(metodos.GetDate());
     }
 }

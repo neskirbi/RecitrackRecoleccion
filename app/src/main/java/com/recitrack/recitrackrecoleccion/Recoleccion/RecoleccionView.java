@@ -3,11 +3,13 @@ package com.recitrack.recitrackrecoleccion.Recoleccion;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.recitrack.recitrackrecoleccion.Avance.AvanceView;
 import com.recitrack.recitrackrecoleccion.Metodos;
 import com.recitrack.recitrackrecoleccion.R;
 
@@ -31,7 +33,6 @@ public class RecoleccionView extends AppCompatActivity implements Recoleccion.Vi
         datosarray = datos.split("/");
         negocio=findViewById(R.id.negocio);
 
-        Toast.makeText(context, ""+datos, Toast.LENGTH_SHORT).show();
         this.negocio.setText(datosarray[0]);
     }
 
@@ -53,4 +54,9 @@ public class RecoleccionView extends AppCompatActivity implements Recoleccion.Vi
     }
 
 
+    @Override
+    public void IrAvance() {
+
+        startActivity(new Intent(context, AvanceView.class));
+    }
 }

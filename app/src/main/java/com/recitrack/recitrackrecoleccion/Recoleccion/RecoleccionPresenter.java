@@ -32,4 +32,8 @@ public class RecoleccionPresenter implements Recoleccion.Presenter {
     }
 
 
+    @Override
+    public void IrAvance() {
+        view.IrAvance();
+    }
 }

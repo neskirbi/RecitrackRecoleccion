@@ -33,6 +33,7 @@ public class RecoleccionInteractor implements Recoleccion.Interactor {
     @Override
     public void Aceptar(String[] data) {
         GuardarRecoleccion(data);
+        presenter.IrAvance();
 
     }
 
@@ -47,8 +48,8 @@ public class RecoleccionInteractor implements Recoleccion.Interactor {
 
         negocio.put("id", data[1]);
         negocio.put("negocio", data[0]);
-        negocio.put("created_at", metodos.GetDate());
-        negocio.put("updated_at", metodos.GetDate());
+        negocio.put("created_at", metodos.GetDateTime());
+        negocio.put("updated_at", metodos.GetDateTime());
 
 
         db.insert("negocios", null, negocio);

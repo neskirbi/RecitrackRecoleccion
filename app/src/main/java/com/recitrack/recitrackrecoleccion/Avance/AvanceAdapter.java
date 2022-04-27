@@ -1,4 +1,4 @@
-package com.recitrack.recitrackrecoleccion.Adapters;
+package com.recitrack.recitrackrecoleccion.Avance;
 
 import android.content.Context;
 import android.util.Log;
@@ -45,7 +45,7 @@ public class AvanceAdapter extends BaseAdapter {
         //Inflamos la vista con nuestro propio layout
         LayoutInflater layoutInflater = LayoutInflater.from(this.context);
 
-        v= layoutInflater.inflate(R.layout.item_historial, null);
+        v= layoutInflater.inflate(R.layout.item_avance, null);
         // Valor actual según la posición
 
         Log.i("lista",""+citas.get(position).toString());
@@ -60,6 +60,13 @@ public class AvanceAdapter extends BaseAdapter {
 
             TextView cantidad = v.findViewById(R.id.fecha);
             cantidad.setText(jsonObject.getString("fecha"));
+            Log.i("uploaded"," \n\nRegistro: "+jsonObject.getInt("uploaded"));
+            if(jsonObject.getInt("uploaded")==0){
+                v.findViewById(R.id.uploaded_danger).setVisibility(View.VISIBLE);
+            }
+            if(jsonObject.getInt("uploaded")==1){
+                v.findViewById(R.id.uploaded_success).setVisibility(View.VISIBLE);
+            }
 
 
 

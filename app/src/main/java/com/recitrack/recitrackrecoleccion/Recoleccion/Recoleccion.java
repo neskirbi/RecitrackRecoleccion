@@ -6,6 +6,7 @@ public interface Recoleccion {
     interface View{
         void Error(String msn);
         void NoCargoInfo();
+        void IrAvance();
     }
     interface Presenter{
 
@@ -14,6 +15,7 @@ public interface Recoleccion {
         void Error(String error_de_conexion);
 
         void Aceptar(String[] data);
+        void IrAvance();
 
     }
     interface Interactor{

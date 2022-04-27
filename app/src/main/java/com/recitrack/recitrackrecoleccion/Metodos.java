@@ -13,9 +13,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.os.Vibrator;
+import android.util.Log;
 
-import androidx.core.content.ContextCompat;
-import androidx.viewbinding.BuildConfig;
 
 import com.recitrack.recitrackrecoleccion.DB.DB;
 
@@ -34,8 +33,11 @@ public class Metodos {
 
     public String GetUrl(){
         if(BuildConfig.DEBUG){
-            return context.getResources().getString(R.string.base_url_debug);
+            String url=context.getResources().getString(R.string.base_url_debug);
+            Log.i("url",url);
+            return url;
         }else{
+            Log.i("url","Huevos");
             return context.getResources().getString(R.string.base_url);
         }
 
@@ -45,8 +47,13 @@ public class Metodos {
         return UUID.randomUUID().toString().replace("-","");
     }
 
-    public String GetDate(){
+    public String GetDateTime(){
         String timeStamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+        return timeStamp;
+    }
+
+    public String GetDate(){
+        String timeStamp = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
         return timeStamp;
     }
 
@@ -151,28 +158,6 @@ public class Metodos {
 
     }
 
-    /*public void IniciarServicioTracking() {
-
-
-        if (!isMyServiceRunning(TrackingService.class, context)) {
-
-            Intent service1 = new Intent(context, TrackingService.class);
-            service1.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                ContextCompat.startForegroundService(context,service1);
-            }else{
-
-                context.startService(service1);
-            }
-
-
-        }
-    }*/
-
-    /*public void DetenerServicioTracking() {
-        Intent service1 = new Intent(context, TrackingService.class);
-        context.stopService(service1);
-    }*/
 
     public boolean isMyServiceRunning(Class<?> serviceClass, Context context) {
         ActivityManager manager = (ActivityManager) context.getSystemService(ACTIVITY_SERVICE);

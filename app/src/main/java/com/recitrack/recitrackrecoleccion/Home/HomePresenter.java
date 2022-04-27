@@ -11,39 +11,12 @@ public class HomePresenter implements Home.Presenter {
     HomeView homeView;
 
     Metodos metodos;
+
     public HomePresenter(HomeView homeView, Context context) {
-        this.context=context;
-        this.homeView=homeView;
-        metodos=new Metodos(context);
+        this.context = context;
+        this.homeView = homeView;
+        metodos = new Metodos(context);
     }
 
 
-    @Override
-    public void Salir() {
-
-        try {
-            DB base = new DB(context);
-            SQLiteDatabase db = base.getWritableDatabase();
-
-            db.execSQL("DELETE from vehiculos ");
-            db.close();
-        }catch (Exception e){}
-
-
-
-        homeView.Salir();
-
-    }
-
-    @Override
-    public void ValidarLogin() {
-        if(metodos.ValidarLogin()){
-
-        }
-    }
-
-    @Override
-    public void IniciarRastreoGPS(){
-        metodos.PedirPermisoGPS(homeView);
-    }
 }

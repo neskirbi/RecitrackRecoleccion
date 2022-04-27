@@ -55,12 +55,6 @@ public class HomeView extends AppCompatActivity implements Home.View {
     protected void onResume() {
         super.onResume();
 
-        //homePresenter.IniciarRastreoGPS();
-
-    }
-
-    public void LogOut(){
-        homePresenter.Salir();
     }
 
 
@@ -85,11 +79,7 @@ public class HomeView extends AppCompatActivity implements Home.View {
         return true;
     }
 
-    @Override
-    public void Salir() {
-        startActivity(new Intent(context, LoginView.class));
-        finish();
-    }
+
 
 
 }

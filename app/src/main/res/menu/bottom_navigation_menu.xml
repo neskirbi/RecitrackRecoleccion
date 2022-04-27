@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/escanear"
+        android:enabled="true"
+        android:icon="@drawable/ic_menu_qr"
+        android:title="Escanear"/>
+
+    <item
+        android:id="@+id/fecha"
+        android:enabled="true"
+        android:icon="@drawable/ic_calendar"
+        android:title="Fecha"/>
+
+
+
+    <item
+        android:id="@+id/subir"
+        android:enabled="true"
+        android:icon="@drawable/ic_upload"
+        android:title="Subir"/>
+</menu>

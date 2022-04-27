@@ -28,8 +28,9 @@ public class DB extends SQLiteOpenHelper {
         Negocios= "CREATE TABLE IF NOT EXISTS  negocios(" +
                 "id text DEFAULT ''," +
                 "negocio text DEFAULT ''," +
-                "created_at text DEFAULT ''," +
-                "updated_at text DEFAULT '')"  ;
+                "uploaded int DEFAULT 0," +
+                "created_at DATETIME DEFAULT ''," +
+                "updated_at DATETIME DEFAULT '')"  ;
 
         sqLiteDatabase.execSQL(Negocios);
 
@@ -38,8 +39,8 @@ public class DB extends SQLiteOpenHelper {
                 "id_recolector text DEFAULT ''," +
                 "lat text DEFAULT ''," +
                 "lon text DEFAULT ''," +
-                "created_at text DEFAULT ''," +
-                "updated_at text DEFAULT '')"  ;
+                "created_at DATETIME DEFAULT ''," +
+                "updated_at DATETIME DEFAULT '')"  ;
 
         sqLiteDatabase.execSQL(Coordenadas);
 
