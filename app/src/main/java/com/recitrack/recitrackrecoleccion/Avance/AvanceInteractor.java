@@ -74,6 +74,7 @@ public class AvanceInteractor implements Avance.AvanceInteractor {
     @SuppressLint("Range")
     @Override
     public void SubirDatos() {
+
         JsonArray data=new JsonArray();
         DB base = new DB(context);
         SQLiteDatabase db = base.getWritableDatabase();
@@ -82,6 +83,10 @@ public class AvanceInteractor implements Avance.AvanceInteractor {
 
 
         if(c.getCount()>0){
+
+            avancePresenter.AbreDialogo();
+
+
             c.moveToFirst();
             while(!c.isAfterLast()){
                 JsonObject jsonObject=new JsonObject();
@@ -93,11 +98,6 @@ public class AvanceInteractor implements Avance.AvanceInteractor {
                 c.moveToNext();
 
             }
-
-
-
-
-
 
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
@@ -117,7 +117,7 @@ public class AvanceInteractor implements Avance.AvanceInteractor {
                 public void onResponse(Call<JsonArray> call, Response<JsonArray> response) {
                     JsonArray body= response.body();
                     if(body!=null){
-
+                        Log.i("Response", "Body "+response.body());
 
                         Confirmar(body);
 
@@ -126,14 +126,15 @@ public class AvanceInteractor implements Avance.AvanceInteractor {
                         Toast.makeText(context, "Error de conexión "+response.code(), Toast.LENGTH_SHORT).show();
 
                     }
+                    avancePresenter.CierraDialogo();
 
                 }
 
                 @Override
                 public void onFailure(Call<JsonArray> call, Throwable t) {
-                    Log.i("Response",": Error"+t.getMessage());
+                    Log.i("avancePresenter.CierraDialogo();",": Error"+t.getMessage());
                     Toast.makeText(context, "Error de conexión "+t.getMessage(), Toast.LENGTH_SHORT).show();
-
+                    avancePresenter.CierraDialogo();
                 }
             });
 

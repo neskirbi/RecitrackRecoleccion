@@ -30,4 +30,14 @@ public class AvancePresenter implements Avance.AvancePresenter {
     public void SubirDatos() {
         avanceInteractor.SubirDatos();
     }
+
+    @Override
+    public void AbreDialogo() {
+        avanceView.AbreDialogo();
+    }
+
+    @Override
+    public void CierraDialogo() {
+        avanceView.CierraDialogo();
+    }
 }

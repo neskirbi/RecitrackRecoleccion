@@ -6,6 +6,7 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ActivityManager;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -26,6 +27,7 @@ public class Metodos {
 
     private Context context;
 
+    ProgressDialog dialog;
     public Metodos(Context context) {
         this.context=context;
     }
@@ -74,7 +76,7 @@ public class Metodos {
     public boolean YaEsta(String id) {
         DB base = new DB(context);
         SQLiteDatabase db = base.getWritableDatabase();
-        Cursor c =  db.rawQuery("SELECT * from negocios where id='"+id+"' ",null);
+        Cursor c =  db.rawQuery("SELECT * from negocios where id='"+id+"' and date(created_at) =  '"+GetDate()+"'",null);
 
         if(c.getCount()>0){
             return true;
@@ -236,6 +238,15 @@ public class Metodos {
         return filas;
 
 
+    }
+
+    public void AbreDialogo(String text){
+        dialog=ProgressDialog.show(context, "",text, true);
+        dialog.setCancelable(true);
+    }
+
+    public void CierraDialogo(){
+        dialog.dismiss();
     }
 
 }

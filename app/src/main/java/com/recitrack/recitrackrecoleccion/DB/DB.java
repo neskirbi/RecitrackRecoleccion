@@ -43,10 +43,6 @@ public class DB extends SQLiteOpenHelper {
                 "updated_at DATETIME DEFAULT '')"  ;
 
         sqLiteDatabase.execSQL(Coordenadas);
-
-
-
-
     }
 
     @Override

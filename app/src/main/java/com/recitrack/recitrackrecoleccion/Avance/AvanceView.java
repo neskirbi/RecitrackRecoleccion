@@ -107,6 +107,16 @@ public class AvanceView extends AppCompatActivity implements Avance.AvanceView {
     }
 
     @Override
+    public void AbreDialogo() {
+        metodos.AbreDialogo("Sincronizando...");
+    }
+
+    @Override
+    public void CierraDialogo() {
+        metodos.CierraDialogo();
+    }
+
+    @Override
     public void onBackPressed() {
         super.onBackPressed();
         startActivity(new Intent(context, MenuView.class));
