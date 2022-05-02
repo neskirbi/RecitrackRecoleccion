@@ -90,6 +90,7 @@ public class AvanceInteractor implements Avance.AvanceInteractor {
             c.moveToFirst();
             while(!c.isAfterLast()){
                 JsonObject jsonObject=new JsonObject();
+                jsonObject.addProperty("id_recolector",metodos.GetIdRecolector());
                 jsonObject.addProperty("id",c.getString(c.getColumnIndex("id")));
                 jsonObject.addProperty("negocio",c.getString(c.getColumnIndex("negocio")));
                 jsonObject.addProperty("created_at",c.getString(c.getColumnIndex("created_at")));

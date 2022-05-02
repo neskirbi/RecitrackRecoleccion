@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.Menu;
 import android.widget.DatePicker;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.snackbar.Snackbar;
@@ -47,7 +48,7 @@ public class MenuView extends AppCompatActivity implements NavigationView.OnNavi
         super.onCreate(savedInstanceState);
         context=this;
         metodos=new Metodos(context);
-        ValidarLogin();
+        //ValidarLogin();
         menuPresenter=new MenuPresenter(this,this);
         binding = ActivityMenuViewBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -59,6 +60,11 @@ public class MenuView extends AppCompatActivity implements NavigationView.OnNavi
 
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        if(metodos.ValidarLogin()){
+            Menu nav_Menu = navigationView.getMenu();
+            nav_Menu.findItem(R.id.nav_login).setVisible(false);
+        }
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
@@ -89,6 +95,12 @@ public class MenuView extends AppCompatActivity implements NavigationView.OnNavi
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
+
+
+        if(R.id.nav_login==id){
+            metodos.Vibrar(metodos.VibrarPush());
+            startActivity(new Intent(this, LoginView.class));
+        }
 
 
         if(R.id.nav_registrar==id){
@@ -138,7 +150,8 @@ public class MenuView extends AppCompatActivity implements NavigationView.OnNavi
 
     @Override
     public void IrAlLogin() {
-        startActivity(new Intent(context, LoginView.class));
+        //startActivity(new Intent(context, LoginView.class));
         finish();
+        System.exit(0);
     }
 }

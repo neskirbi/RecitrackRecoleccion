@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -21,6 +22,7 @@ import com.google.gson.JsonArray;
 import com.recitrack.recitrackrecoleccion.BuildConfig;
 import com.recitrack.recitrackrecoleccion.DB.DB;
 import com.recitrack.recitrackrecoleccion.Home.HomeView;
+import com.recitrack.recitrackrecoleccion.Login.LoginView;
 import com.recitrack.recitrackrecoleccion.Menu.MenuView;
 import com.recitrack.recitrackrecoleccion.Metodos;
 import com.recitrack.recitrackrecoleccion.R;
@@ -69,6 +71,10 @@ public class AvanceView extends AppCompatActivity implements Avance.AvanceView {
                 int id = item.getItemId();
                 metodos.Vibrar(metodos.VibrarPush());
 
+
+
+
+
                 Log.i("Bottom",id+"");
                 if(R.id.escanear==id){
                    startActivity(new Intent(context, HomeView.class));
@@ -81,7 +87,12 @@ public class AvanceView extends AppCompatActivity implements Avance.AvanceView {
                 }
 
                 if(R.id.subir==id){
-                    avancePresenter.SubirDatos();
+                    if(metodos.ValidarLogin()){
+                        avancePresenter.SubirDatos();
+                    }else{
+                        Toast.makeText(context, "Primero debe de iniciar sesión", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(context, LoginView.class));
+                    }
                 }
                 return false;
             }

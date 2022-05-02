@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Recitrack Recolección</string>
     <string name="base_url">https://reci-track.mx/</string>
-    <string name="base_url_debug">http://192.168.100.103/concretos/public/</string>
+    <string name="base_url_debug">http://192.168.0.100/concretos/public/</string>
     <string name="title_activity_menu_view">MenuView</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
