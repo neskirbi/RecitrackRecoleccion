@@ -6,10 +6,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.textfield.TextInputEditText;
 import com.recitrack.recitrackrecoleccion.Avance.AvanceView;
+import com.recitrack.recitrackrecoleccion.Home.Home;
 import com.recitrack.recitrackrecoleccion.Metodos;
 import com.recitrack.recitrackrecoleccion.R;
 
@@ -21,6 +24,7 @@ public class RecoleccionView extends AppCompatActivity implements Recoleccion.Vi
     TextView negocio;
     Metodos metodos;
     String[] datosarray;
+    EditText cantidad;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +35,11 @@ public class RecoleccionView extends AppCompatActivity implements Recoleccion.Vi
         presenter=new RecoleccionPresenter(this,context);
         datos=getIntent().getStringExtra("datos");
         datosarray = datos.split("/");
+        cantidad=findViewById(R.id.cantidad);
+        if(datosarray.length!=2){
+            Toast.makeText(context, "Error de QR.", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(this, Home.class));
+        }
         negocio=findViewById(R.id.negocio);
 
         this.negocio.setText(datosarray[0]);
@@ -38,7 +47,7 @@ public class RecoleccionView extends AppCompatActivity implements Recoleccion.Vi
 
     public void Aceptar(View view){
         metodos.Vibrar(metodos.VibrarPush());
-        presenter.Aceptar(datosarray);
+        presenter.Aceptar(datosarray,cantidad.getText().toString());
     }
 
 

@@ -45,7 +45,7 @@ public class AvanceInteractor implements Avance.AvanceInteractor {
         try {
             date= dateFormat.format(dateFormat.parse(date));
 
-            Cursor c =  db.rawQuery("SELECT * from negocios where DATE(created_at) = '"+date+"' ",null);
+            Cursor c =  db.rawQuery("SELECT * from recolecciones where DATE(created_at) = '"+date+"' ",null);
 
             c.moveToFirst();
 
@@ -55,6 +55,7 @@ public class AvanceInteractor implements Avance.AvanceInteractor {
                 while(!c.isAfterLast()){
                     JsonObject jsonObject=new JsonObject();
                     jsonObject.addProperty("negocio",c.getString(c.getColumnIndex("negocio")));
+                    jsonObject.addProperty("cantidad",c.getString(c.getColumnIndex("cantidad")));
                     jsonObject.addProperty("fecha",c.getString(c.getColumnIndex("created_at")));
                     jsonObject.addProperty("uploaded",c.getInt(c.getColumnIndex("uploaded")));
                     avance.add(jsonObject);
@@ -79,7 +80,7 @@ public class AvanceInteractor implements Avance.AvanceInteractor {
         DB base = new DB(context);
         SQLiteDatabase db = base.getWritableDatabase();
 
-        Cursor c =  db.rawQuery("SELECT * from negocios where uploaded = 0 ",null);
+        Cursor c =  db.rawQuery("SELECT * from recolecciones where uploaded = 0 ",null);
 
 
         if(c.getCount()>0){
@@ -93,6 +94,7 @@ public class AvanceInteractor implements Avance.AvanceInteractor {
                 jsonObject.addProperty("id_recolector",metodos.GetIdRecolector());
                 jsonObject.addProperty("id",c.getString(c.getColumnIndex("id")));
                 jsonObject.addProperty("negocio",c.getString(c.getColumnIndex("negocio")));
+                jsonObject.addProperty("cantidad",c.getString(c.getColumnIndex("cantidad")));
                 jsonObject.addProperty("created_at",c.getString(c.getColumnIndex("created_at")));
                 jsonObject.addProperty("updated_at",c.getString(c.getColumnIndex("updated_at")));
                 data.add(jsonObject);
@@ -144,12 +146,12 @@ public class AvanceInteractor implements Avance.AvanceInteractor {
         }
     }
 
-    private void Confirmar(JsonArray negocios) {
-        for(int i=0;i<negocios.size();i++){
-            Log.i("Response"," \n\nRegistro: "+negocios.get(i));
+    private void Confirmar(JsonArray recolecciones) {
+        for(int i=0;i<recolecciones.size();i++){
+            Log.i("Response"," \n\nRegistro: "+recolecciones.get(i));
             DB base = new DB(context);
             SQLiteDatabase db = base.getWritableDatabase();
-            String strSQL = "UPDATE negocios SET uploaded = 1 WHERE id = "+negocios.get(i)+" ";
+            String strSQL = "UPDATE recolecciones SET uploaded = 1 WHERE id = "+recolecciones.get(i)+" ";
             db.execSQL(strSQL);
         }
         avancePresenter.ObternerAvance(metodos.GetDate());

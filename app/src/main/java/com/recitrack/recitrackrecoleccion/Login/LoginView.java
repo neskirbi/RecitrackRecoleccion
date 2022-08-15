@@ -28,7 +28,7 @@ public class LoginView extends AppCompatActivity implements Login.View {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        laymail=findViewById(R.id.laymail);
+        laymail=findViewById(R.id.laytelefono);
         laypass=findViewById(R.id.laypass);
         telefono=findViewById(R.id.telefono);
         pass=findViewById(R.id.pass);

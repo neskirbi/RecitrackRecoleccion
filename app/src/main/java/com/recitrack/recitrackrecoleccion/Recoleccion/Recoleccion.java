@@ -14,11 +14,11 @@ public interface Recoleccion {
 
         void Error(String error_de_conexion);
 
-        void Aceptar(String[] data);
+        void Aceptar(String[] data,String cantidad);
         void IrAvance();
 
     }
     interface Interactor{
-        void Aceptar(String[] data);
+        void Aceptar(String[] data,String cantidad);
     }
 }

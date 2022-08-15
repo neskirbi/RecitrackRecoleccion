@@ -76,7 +76,7 @@ public class Metodos {
     public boolean YaEsta(String id) {
         DB base = new DB(context);
         SQLiteDatabase db = base.getWritableDatabase();
-        Cursor c =  db.rawQuery("SELECT * from negocios where id='"+id+"' and date(created_at) =  '"+GetDate()+"'",null);
+        Cursor c =  db.rawQuery("SELECT * from recolecciones where id='"+id+"' and date(created_at) =  '"+GetDate()+"'",null);
 
         if(c.getCount()>0){
             return true;

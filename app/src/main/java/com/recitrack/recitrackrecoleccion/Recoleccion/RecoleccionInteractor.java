@@ -31,28 +31,30 @@ public class RecoleccionInteractor implements Recoleccion.Interactor {
 
 
     @Override
-    public void Aceptar(String[] data) {
-        GuardarRecoleccion(data);
+    public void Aceptar(String[] data,String cantidad) {
+
+        GuardarRecoleccion(data,cantidad);
         presenter.IrAvance();
 
     }
 
-    public void GuardarRecoleccion(String[] data){
+    public void GuardarRecoleccion(String[] data, String cantidad){
         if(metodos.YaEsta(data[1])){
             Toast.makeText(context, "Ya se capturo anteriormente:"+data[0], Toast.LENGTH_SHORT).show();
             return ;
         }
         DB base = new DB(context);
         SQLiteDatabase db = base.getWritableDatabase();
-        ContentValues negocio = new ContentValues();
+        ContentValues recoleccion = new ContentValues();
 
-        negocio.put("id", data[1]);
-        negocio.put("negocio", data[0]);
-        negocio.put("created_at", metodos.GetDateTime());
-        negocio.put("updated_at", metodos.GetDateTime());
+        recoleccion.put("id", data[1]);
+        recoleccion.put("negocio", data[0]);
+        recoleccion.put("cantidad",cantidad);
+        recoleccion.put("created_at", metodos.GetDateTime());
+        recoleccion.put("updated_at", metodos.GetDateTime());
 
 
-        db.insert("negocios", null, negocio);
+        db.insert("recolecciones", null, recoleccion);
         db.close();
 
     }

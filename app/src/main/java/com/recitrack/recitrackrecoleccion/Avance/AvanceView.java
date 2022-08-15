@@ -136,7 +136,7 @@ public class AvanceView extends AppCompatActivity implements Avance.AvanceView {
     void DesConfirmar() {
         DB base = new DB(context);
         SQLiteDatabase db = base.getWritableDatabase();
-        String strSQL = "UPDATE negocios SET uploaded = 0 ";
+        String strSQL = "UPDATE recolecciones SET uploaded = 0 ";
         db.execSQL(strSQL);
         avancePresenter.ObternerAvance(metodos.GetDate());
     }
