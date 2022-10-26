@@ -1,6 +1,7 @@
 package com.recitrack.recitrackrecoleccion.Avance;
 
 import com.google.gson.JsonArray;
+import com.recitrack.recitrackrecoleccion.BuildConfig;
 import com.recitrack.recitrackrecoleccion.Models.Negocio;
 
 import retrofit2.Call;
@@ -10,7 +11,7 @@ import retrofit2.http.POST;
 
 public interface AvanceInterface {
 
-    @Headers("APP-KEY: cefa31bbcb2e11ec81768030496e73b4")
+    @Headers(BuildConfig.APP_KEY)
     @POST("api/CargarRecoleccion")
     Call<JsonArray> CargarRecoleccion(@Body JsonArray data);
 }

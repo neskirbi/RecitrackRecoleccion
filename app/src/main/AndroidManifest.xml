@@ -20,14 +20,13 @@
             android:name=".Menu.MenuView"
             android:exported="false"
             android:label="@string/title_activity_menu_view"
-            android:theme="@style/Theme.RecitrackRecoleccion.NoActionBar" />
+            android:theme="@style/Theme.NoActionBar" />
         <activity
             android:name=".Avance.AvanceView"
             android:exported="false" />
         <activity
             android:name=".Recoleccion.RecoleccionView"
-            android:exported="false"
-            android:theme="@style/Theme.NoActionBar" />
+            android:exported="false" />
         <activity
             android:name=".Home.HomeView"
             android:exported="true"

@@ -1,15 +1,22 @@
 package com.recitrack.recitrackrecoleccion.Recoleccion;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.recitrack.recitrackrecoleccion.Avance.AvanceView;
 import com.recitrack.recitrackrecoleccion.Home.Home;
@@ -25,6 +32,8 @@ public class RecoleccionView extends AppCompatActivity implements Recoleccion.Vi
     Metodos metodos;
     String[] datosarray;
     EditText cantidad;
+    FrameLayout dialogo;
+    BottomNavigationView bottom_navigation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,13 +45,43 @@ public class RecoleccionView extends AppCompatActivity implements Recoleccion.Vi
         datos=getIntent().getStringExtra("datos");
         datosarray = datos.split("/");
         cantidad=findViewById(R.id.cantidad);
+        dialogo=findViewById(R.id.dialogo);
+        bottom_navigation=findViewById(R.id.bottom_navigation);
         if(datosarray.length!=2){
             Toast.makeText(context, "Error de QR.", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this, Home.class));
         }
         negocio=findViewById(R.id.negocio);
 
-        this.negocio.setText(datosarray[0]);
+       setTitle(datosarray[0]);
+
+        dialogo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialogo.setVisibility(View.GONE);
+            }
+        });
+
+        bottom_navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.agregar:
+                        dialogo.setVisibility(View.VISIBLE);
+                        break;
+                }
+                return false;
+            }
+        });
+
+        Spinner spinner = (Spinner) findViewById(R.id.tresiduos);
+// Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.residuos, android.R.layout.simple_spinner_item);
+// Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+// Apply the adapter to the spinner
+        spinner.setAdapter(adapter);
     }
 
     public void Aceptar(View view){

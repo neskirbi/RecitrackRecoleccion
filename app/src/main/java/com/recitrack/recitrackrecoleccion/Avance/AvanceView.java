@@ -47,7 +47,7 @@ public class AvanceView extends AppCompatActivity implements Avance.AvanceView {
         avancePresenter=new AvancePresenter(this,this);
         listview = findViewById(R.id.lista_historial);
         bottom_navigation=findViewById(R.id.bottom_navigation);
-        datePicker=findViewById(R.id.datepicker);
+        datePicker=findViewById(R.id.datepicker); 
         fondo=findViewById(R.id.fondo);
         borrar=findViewById(R.id.borrar);
         avancePresenter.ObternerAvance(metodos.GetDate());
