@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="residuos">
+        <item>--Residuo--</item>
+        <item>Organico</item>
+        <item>Vidrio</item>
+        <item>Inorganico</item>
+        <item>Aluminio</item>
+    </string-array>
+
+</resources>

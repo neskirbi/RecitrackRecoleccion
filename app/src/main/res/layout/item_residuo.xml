@@ -3,32 +3,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginBottom="10dp" android:background="@drawable/round_border">
+    android:layout_marginBottom="10dp"
+    android:background="@drawable/round_border"
+    android:padding="10dp">
 
-    <TextView
-        android:id="@+id/residuo"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:text="Residuo"
-        android:textStyle="bold"
-        tools:ignore="MissingConstraints" />
-
-    <com.google.android.material.textfield.TextInputLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="20dp"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/cantidad"
-            android:singleLine="true"
-            android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/residuo"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Cantidad de Bolsas"
-            android:inputType="number">
+            android:text="Residuo"
+            android:textStyle="bold" />
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        </com.google.android.material.textfield.TextInputEditText>
+
+            <TextView
+                android:id="@+id/contenedor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Unidades"/>
+
+            <TextView
+                android:id="@+id/cantidad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="cantidad"
+                android:layout_gravity="right"/>
 
 
-    </com.google.android.material.textfield.TextInputLayout>
+        </FrameLayout>
+
+
+    </LinearLayout>
+
+
+
+
+
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

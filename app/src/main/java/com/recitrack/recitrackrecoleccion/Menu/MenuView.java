@@ -30,6 +30,7 @@ import com.recitrack.recitrackrecoleccion.DB.DB;
 import com.recitrack.recitrackrecoleccion.Home.HomeView;
 import com.recitrack.recitrackrecoleccion.Login.LoginView;
 import com.recitrack.recitrackrecoleccion.Metodos;
+import com.recitrack.recitrackrecoleccion.Scaner.Scaner;
 import com.recitrack.recitrackrecoleccion.databinding.ActivityMenuViewBinding;
 import com.recitrack.recitrackrecoleccion.R;
 
@@ -105,7 +106,7 @@ public class MenuView extends AppCompatActivity implements NavigationView.OnNavi
 
         if(R.id.nav_registrar==id){
             metodos.Vibrar(metodos.VibrarPush());
-            startActivity(new Intent(this, HomeView.class));
+            startActivity(new Intent(this, Scaner.class));
         }
 
         if(R.id.nav_avance==id){

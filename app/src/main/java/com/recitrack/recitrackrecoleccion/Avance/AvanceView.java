@@ -26,6 +26,7 @@ import com.recitrack.recitrackrecoleccion.Login.LoginView;
 import com.recitrack.recitrackrecoleccion.Menu.MenuView;
 import com.recitrack.recitrackrecoleccion.Metodos;
 import com.recitrack.recitrackrecoleccion.R;
+import com.recitrack.recitrackrecoleccion.Scaner.Scaner;
 
 public class AvanceView extends AppCompatActivity implements Avance.AvanceView {
     private ListView listview;
@@ -77,7 +78,7 @@ public class AvanceView extends AppCompatActivity implements Avance.AvanceView {
 
                 Log.i("Bottom",id+"");
                 if(R.id.escanear==id){
-                   startActivity(new Intent(context, HomeView.class));
+                    startActivity(new Intent(context, Scaner.class));
                 }
 
 

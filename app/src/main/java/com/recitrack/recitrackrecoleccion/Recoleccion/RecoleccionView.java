@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -34,6 +35,9 @@ public class RecoleccionView extends AppCompatActivity implements Recoleccion.Vi
     EditText cantidad;
     FrameLayout dialogo;
     BottomNavigationView bottom_navigation;
+    LinearLayout lista;
+    Spinner residuos,contenedores;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,11 +46,13 @@ public class RecoleccionView extends AppCompatActivity implements Recoleccion.Vi
         context=this;
         metodos=new Metodos(context);
         presenter=new RecoleccionPresenter(this,context);
+        lista=findViewById(R.id.lista);
         datos=getIntent().getStringExtra("datos");
         datosarray = datos.split("/");
         cantidad=findViewById(R.id.cantidad);
         dialogo=findViewById(R.id.dialogo);
         bottom_navigation=findViewById(R.id.bottom_navigation);
+
         if(datosarray.length!=2){
             Toast.makeText(context, "Error de QR.", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this, Home.class));
@@ -58,7 +64,7 @@ public class RecoleccionView extends AppCompatActivity implements Recoleccion.Vi
         dialogo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dialogo.setVisibility(View.GONE);
+                CerrarDialogo();
             }
         });
 
@@ -74,14 +80,27 @@ public class RecoleccionView extends AppCompatActivity implements Recoleccion.Vi
             }
         });
 
-        Spinner spinner = (Spinner) findViewById(R.id.tresiduos);
-// Create an ArrayAdapter using the string array and a default spinner layout
+         residuos = (Spinner) findViewById(R.id.residuo);
+        // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.residuos, android.R.layout.simple_spinner_item);
-// Specify the layout to use when the list of choices appears
+        // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-// Apply the adapter to the spinner
-        spinner.setAdapter(adapter);
+        // Apply the adapter to the spinner
+        residuos.setAdapter(adapter);
+
+        contenedores = (Spinner) findViewById(R.id.contenedor);
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this,
+                R.array.contenedores, android.R.layout.simple_spinner_item);
+        // Specify the layout to use when the list of choices appears
+        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
+        contenedores.setAdapter(adapter2);
+    }
+
+    private void CerrarDialogo() {
+        dialogo.setVisibility(View.GONE);
     }
 
     public void Aceptar(View view){
@@ -106,5 +125,25 @@ public class RecoleccionView extends AppCompatActivity implements Recoleccion.Vi
     public void IrAvance() {
 
         startActivity(new Intent(context, AvanceView.class));
+    }
+
+
+    public void AgregarResiduo(View view) {
+        LayoutInflater inflater = getLayoutInflater();
+        View item = inflater.inflate(R.layout.item_residuo, null);
+        TextView residuo=item.findViewById(R.id.residuo);
+        residuo.setText(residuos.getSelectedItem().toString());
+
+        TextView contenedor=item.findViewById(R.id.contenedor);
+        contenedor.setText(contenedores.getSelectedItem().toString());
+
+        TextView cantidad=item.findViewById(R.id.cantidad);
+        cantidad.setText(this.cantidad.getText());
+
+        lista.addView(item);
+
+        CerrarDialogo();
+
+
     }
 }
