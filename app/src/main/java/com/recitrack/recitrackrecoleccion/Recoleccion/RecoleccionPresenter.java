@@ -1,10 +1,10 @@
 package com.recitrack.recitrackrecoleccion.Recoleccion;
 
-import android.app.Activity;
 import android.content.Context;
 
 import com.recitrack.recitrackrecoleccion.Metodos;
-import com.recitrack.recitrackrecoleccion.Models.Negocio;
+
+import java.util.ArrayList;
 
 public class RecoleccionPresenter implements Recoleccion.Presenter {
     RecoleccionView view;
@@ -17,6 +17,11 @@ public class RecoleccionPresenter implements Recoleccion.Presenter {
         this.context = context;
         metodos=new Metodos(context);
         interactor=new RecoleccionInteractor(this,context);
+    }
+
+    @Override
+    public void GuardarRecoleccion(ArrayList<com.recitrack.recitrackrecoleccion.Models.Recoleccion> recoleccion) {
+        interactor.GuardarRecoleccion(recoleccion);
     }
 
     @Override
@@ -34,7 +39,7 @@ public class RecoleccionPresenter implements Recoleccion.Presenter {
             Error("La cantidad no puede ser 0."+cantidad);
         }else{
 
-            interactor.Aceptar(data,cantidad);
+
         }
     }
 

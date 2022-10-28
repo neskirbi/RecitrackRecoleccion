@@ -27,7 +27,10 @@ public class DB extends SQLiteOpenHelper {
 
         Recolecciones= "CREATE TABLE IF NOT EXISTS  recolecciones(" +
                 "id text DEFAULT ''," +
+                "id_negocio text DEFAULT ''," +
                 "negocio text DEFAULT ''," +
+                "residuo text DEFAULT ''," +
+                "contenedor text DEFAULT ''," +
                 "cantidad string DEFAULT '0'," +
                 "uploaded int DEFAULT 0," +
                 "created_at DATETIME DEFAULT ''," +

@@ -106,7 +106,7 @@ public class MenuView extends AppCompatActivity implements NavigationView.OnNavi
 
         if(R.id.nav_registrar==id){
             metodos.Vibrar(metodos.VibrarPush());
-            startActivity(new Intent(this, Scaner.class));
+            metodos.PedirPermisoCamara(this);
         }
 
         if(R.id.nav_avance==id){

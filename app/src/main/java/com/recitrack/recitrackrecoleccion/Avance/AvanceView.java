@@ -3,6 +3,7 @@ package com.recitrack.recitrackrecoleccion.Avance;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
@@ -38,12 +39,15 @@ public class AvanceView extends AppCompatActivity implements Avance.AvanceView {
     BottomNavigationView bottom_navigation;
     LinearLayout fondo;
     FloatingActionButton borrar;
+    Activity activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_avance_view);
+
         context=this;
+        activity=this;
         metodos=new Metodos(this);
         avancePresenter=new AvancePresenter(this,this);
         listview = findViewById(R.id.lista_historial);
@@ -78,7 +82,9 @@ public class AvanceView extends AppCompatActivity implements Avance.AvanceView {
 
                 Log.i("Bottom",id+"");
                 if(R.id.escanear==id){
-                    startActivity(new Intent(context, Scaner.class));
+
+                    metodos.Vibrar(metodos.VibrarPush());
+                    metodos.PedirPermisoCamara(activity);
                 }
 
 

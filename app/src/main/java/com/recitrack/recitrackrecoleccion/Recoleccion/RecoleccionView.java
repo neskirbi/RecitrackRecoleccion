@@ -1,17 +1,26 @@
 package com.recitrack.recitrackrecoleccion.Recoleccion;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintHelper;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewManager;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -23,6 +32,11 @@ import com.recitrack.recitrackrecoleccion.Avance.AvanceView;
 import com.recitrack.recitrackrecoleccion.Home.Home;
 import com.recitrack.recitrackrecoleccion.Metodos;
 import com.recitrack.recitrackrecoleccion.R;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 public class RecoleccionView extends AppCompatActivity implements Recoleccion.View {
 
@@ -37,6 +51,7 @@ public class RecoleccionView extends AppCompatActivity implements Recoleccion.Vi
     BottomNavigationView bottom_navigation;
     LinearLayout lista;
     Spinner residuos,contenedores;
+    ArrayList<com.recitrack.recitrackrecoleccion.Models.Recoleccion> recoleccions=new ArrayList<>();
 
 
     @Override
@@ -61,46 +76,69 @@ public class RecoleccionView extends AppCompatActivity implements Recoleccion.Vi
 
        setTitle(datosarray[0]);
 
-        dialogo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                CerrarDialogo();
-            }
-        });
+
+
+       dialogo.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               CerrarDialogo();
+           }
+       });
 
         bottom_navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.agregar:
+
                         dialogo.setVisibility(View.VISIBLE);
-                        break;
+                    break;
+                    case R.id.guardar:
+
+                        AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
+                        alertDialog.setTitle("Guardar");
+                        alertDialog.setMessage("¿Desea guardar estos datos?");
+
+
+
+                        //alertDialog.setIcon(R.drawable.img_quitar);
+
+                        alertDialog.setPositiveButton("Sí",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        presenter.GuardarRecoleccion(recoleccions);
+
+                                    }
+                                });
+
+                        alertDialog.setNegativeButton("No",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.cancel();
+                                    }
+                                });
+
+                        alertDialog.show();
+
+
+                    break;
                 }
                 return false;
             }
         });
 
-         residuos = (Spinner) findViewById(R.id.residuo);
-        // Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.residuos, android.R.layout.simple_spinner_item);
-        // Specify the layout to use when the list of choices appears
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        // Apply the adapter to the spinner
-        residuos.setAdapter(adapter);
+        residuos = (Spinner) findViewById(R.id.residuos);
 
-        contenedores = (Spinner) findViewById(R.id.contenedor);
-        // Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this,
-                R.array.contenedores, android.R.layout.simple_spinner_item);
-        // Specify the layout to use when the list of choices appears
-        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        // Apply the adapter to the spinner
-        contenedores.setAdapter(adapter2);
+
+        contenedores = (Spinner) findViewById(R.id.contenedores);
+
     }
 
     private void CerrarDialogo() {
         dialogo.setVisibility(View.GONE);
+        residuos.setSelection(0);
+        contenedores.setSelection(0);
+        cantidad.setText("");
     }
 
     public void Aceptar(View view){
@@ -123,14 +161,35 @@ public class RecoleccionView extends AppCompatActivity implements Recoleccion.Vi
 
     @Override
     public void IrAvance() {
-
         startActivity(new Intent(context, AvanceView.class));
     }
 
 
     public void AgregarResiduo(View view) {
+
+        if(residuos.getSelectedItemPosition()==0){
+            Toast.makeText(context, "Debe seleccionar un tipo de residuo.", Toast.LENGTH_SHORT).show();
+
+            return;
+        }
+
+        if(contenedores.getSelectedItemPosition()==0){
+            Toast.makeText(context, "Debe seleccionar un tipo de contenedor.", Toast.LENGTH_SHORT).show();
+
+            return;
+        }
+
+        if(cantidad.length()==0){
+            Toast.makeText(context, "Debe poner que la cantidad.", Toast.LENGTH_SHORT).show();
+
+            return;
+        }
+
+        String id=metodos.GetUuid();
+        recoleccions.add(new com.recitrack.recitrackrecoleccion.Models.Recoleccion(id,datosarray[1],residuos.getSelectedItem().toString(),contenedores.getSelectedItem().toString(),this.cantidad.getText().toString()));
         LayoutInflater inflater = getLayoutInflater();
         View item = inflater.inflate(R.layout.item_residuo, null);
+
         TextView residuo=item.findViewById(R.id.residuo);
         residuo.setText(residuos.getSelectedItem().toString());
 
@@ -139,11 +198,40 @@ public class RecoleccionView extends AppCompatActivity implements Recoleccion.Vi
 
         TextView cantidad=item.findViewById(R.id.cantidad);
         cantidad.setText(this.cantidad.getText());
+        Log.i("Removiendo","Tamanio:"+recoleccions.size());
+        ImageView menu =item.findViewById(R.id.menu);
+        menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                metodos.Vibrar(metodos.VibrarPush());
+
+                Log.i("Removiendo","Tamanio:"+recoleccions.size());
+                for(int i=0;i<recoleccions.size();i++){
+                    Log.i("Removiendo",id+"   "+recoleccions.get(i).getId());
+                    if(recoleccions.get(i).getId().equals(id)){
+                        Log.i("Removiendo",id+"   "+recoleccions.get(i).getId());
+                        recoleccions.remove(i);
+                    }
+                }
+
+                ((ViewManager)item.getParent()).removeView(item);
+
+            }
+        });
 
         lista.addView(item);
 
         CerrarDialogo();
 
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(recoleccions.size()==0){
+            super.onBackPressed();
+        }else{
+            Toast.makeText(context, "Para salir debe guardar la recolección.", Toast.LENGTH_SHORT).show();
+        }
     }
 }

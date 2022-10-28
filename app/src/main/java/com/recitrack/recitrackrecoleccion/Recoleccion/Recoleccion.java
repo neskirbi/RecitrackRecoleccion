@@ -1,6 +1,6 @@
 package com.recitrack.recitrackrecoleccion.Recoleccion;
 
-import com.recitrack.recitrackrecoleccion.Models.Negocio;
+import java.util.ArrayList;
 
 public interface Recoleccion {
     interface View{
@@ -9,16 +9,15 @@ public interface Recoleccion {
         void IrAvance();
     }
     interface Presenter{
-
+        void GuardarRecoleccion(ArrayList<com.recitrack.recitrackrecoleccion.Models.Recoleccion> recoleccion);
         void NoCargoInfo();
 
         void Error(String error_de_conexion);
 
-        void Aceptar(String[] data,String cantidad);
         void IrAvance();
 
     }
     interface Interactor{
-        void Aceptar(String[] data,String cantidad);
+        void GuardarRecoleccion(ArrayList<com.recitrack.recitrackrecoleccion.Models.Recoleccion> recoleccion);
     }
 }

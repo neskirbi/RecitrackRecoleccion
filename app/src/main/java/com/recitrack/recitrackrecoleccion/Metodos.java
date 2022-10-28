@@ -15,9 +15,11 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.os.Vibrator;
 import android.util.Log;
+import android.view.View;
 
 
 import com.recitrack.recitrackrecoleccion.DB.DB;
+import com.recitrack.recitrackrecoleccion.Scaner.Scaner;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -249,4 +251,24 @@ public class Metodos {
         dialog.dismiss();
     }
 
+
+    public Boolean PedirPermisoCamara(Activity activity) {
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+            int permsRequestCode = 100;
+            String[] perms = {Manifest.permission.CAMERA};
+
+            int camara = context.checkSelfPermission(Manifest.permission.CAMERA);
+
+            if (camara == PackageManager.PERMISSION_GRANTED ) {
+                context.startActivity(new Intent(context, Scaner.class));
+            } else {
+
+                activity.requestPermissions(perms, permsRequestCode);
+                return false;
+            }
+
+        }
+        return true;
+    }
 }

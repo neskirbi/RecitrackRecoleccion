@@ -11,6 +11,8 @@ import com.recitrack.recitrackrecoleccion.DB.DB;
 import com.recitrack.recitrackrecoleccion.Metodos;
 import com.recitrack.recitrackrecoleccion.Models.Negocio;
 
+import java.util.ArrayList;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -30,32 +32,27 @@ public class RecoleccionInteractor implements Recoleccion.Interactor {
     }
 
 
-    @Override
-    public void Aceptar(String[] data,String cantidad) {
-
-        GuardarRecoleccion(data,cantidad);
-        presenter.IrAvance();
-
-    }
-
-    public void GuardarRecoleccion(String[] data, String cantidad){
-        if(metodos.YaEsta(data[1])){
-            Toast.makeText(context, "Ya se capturo anteriormente:"+data[0], Toast.LENGTH_SHORT).show();
-            return ;
-        }
+    public void GuardarRecoleccion(ArrayList<com.recitrack.recitrackrecoleccion.Models.Recoleccion> recoleccions){
         DB base = new DB(context);
         SQLiteDatabase db = base.getWritableDatabase();
-        ContentValues recoleccion = new ContentValues();
+        for(int i=0;i<recoleccions.size();i++){
+            ContentValues recoleccion = new ContentValues();
 
-        recoleccion.put("id", data[1]);
-        recoleccion.put("negocio", data[0]);
-        recoleccion.put("cantidad",cantidad);
-        recoleccion.put("created_at", metodos.GetDateTime());
-        recoleccion.put("updated_at", metodos.GetDateTime());
+            recoleccion.put("id",recoleccions.get(i).getId());
+            recoleccion.put("id_negocio", recoleccions.get(i).getId_negocio());
+            recoleccion.put("residuo", recoleccions.get(i).getResiduo());
+            recoleccion.put("contenedor",recoleccions.get(i).getContenedor());
+            recoleccion.put("cantidad",recoleccions.get(i).getCantidad());
+            recoleccion.put("created_at", metodos.GetDateTime());
+            recoleccion.put("updated_at", metodos.GetDateTime());
 
 
-        db.insert("recolecciones", null, recoleccion);
+            db.insert("recolecciones", null, recoleccion);
+        }
+
+
         db.close();
+        presenter.IrAvance();
 
     }
 }
