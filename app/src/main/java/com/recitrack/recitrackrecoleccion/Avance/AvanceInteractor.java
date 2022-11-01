@@ -45,7 +45,7 @@ public class AvanceInteractor implements Avance.AvanceInteractor {
         try {
             date= dateFormat.format(dateFormat.parse(date));
 
-            Cursor c =  db.rawQuery("SELECT * from recolecciones where DATE(created_at) = '"+date+"' ",null);
+            Cursor c =  db.rawQuery("SELECT negocio,sum(uploaded) as uploaded,max(created_at) as created_at  from recolecciones where DATE(created_at) = '"+date+"' group by negocio ",null);
 
             c.moveToFirst();
 
@@ -55,7 +55,6 @@ public class AvanceInteractor implements Avance.AvanceInteractor {
                 while(!c.isAfterLast()){
                     JsonObject jsonObject=new JsonObject();
                     jsonObject.addProperty("negocio",c.getString(c.getColumnIndex("negocio")));
-                    jsonObject.addProperty("cantidad",c.getString(c.getColumnIndex("cantidad")));
                     jsonObject.addProperty("fecha",c.getString(c.getColumnIndex("created_at")));
                     jsonObject.addProperty("uploaded",c.getInt(c.getColumnIndex("uploaded")));
                     avance.add(jsonObject);
@@ -93,7 +92,10 @@ public class AvanceInteractor implements Avance.AvanceInteractor {
                 JsonObject jsonObject=new JsonObject();
                 jsonObject.addProperty("id_recolector",metodos.GetIdRecolector());
                 jsonObject.addProperty("id",c.getString(c.getColumnIndex("id")));
+                jsonObject.addProperty("id_negocio",c.getString(c.getColumnIndex("id_negocio")));
                 jsonObject.addProperty("negocio",c.getString(c.getColumnIndex("negocio")));
+                jsonObject.addProperty("contenedor",c.getString(c.getColumnIndex("contenedor")));
+                jsonObject.addProperty("residuo",c.getString(c.getColumnIndex("residuo")));
                 jsonObject.addProperty("cantidad",c.getString(c.getColumnIndex("cantidad")));
                 jsonObject.addProperty("created_at",c.getString(c.getColumnIndex("created_at")));
                 jsonObject.addProperty("updated_at",c.getString(c.getColumnIndex("updated_at")));

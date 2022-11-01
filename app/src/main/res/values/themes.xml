@@ -58,4 +58,6 @@
     <style name="Theme.RecitrackRecoleccion.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.RecitrackRecoleccion.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight"/>
 </resources>

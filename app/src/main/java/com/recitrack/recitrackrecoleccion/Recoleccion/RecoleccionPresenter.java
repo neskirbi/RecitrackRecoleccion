@@ -20,8 +20,8 @@ public class RecoleccionPresenter implements Recoleccion.Presenter {
     }
 
     @Override
-    public void GuardarRecoleccion(ArrayList<com.recitrack.recitrackrecoleccion.Models.Recoleccion> recoleccion) {
-        interactor.GuardarRecoleccion(recoleccion);
+    public void GuardarRecoleccion(String negocio,ArrayList<com.recitrack.recitrackrecoleccion.Models.Recoleccion> recoleccion) {
+        interactor.GuardarRecoleccion(negocio,recoleccion);
     }
 
     @Override

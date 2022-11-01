@@ -32,7 +32,7 @@ public class RecoleccionInteractor implements Recoleccion.Interactor {
     }
 
 
-    public void GuardarRecoleccion(ArrayList<com.recitrack.recitrackrecoleccion.Models.Recoleccion> recoleccions){
+    public void GuardarRecoleccion(String negocio,ArrayList<com.recitrack.recitrackrecoleccion.Models.Recoleccion> recoleccions){
         DB base = new DB(context);
         SQLiteDatabase db = base.getWritableDatabase();
         for(int i=0;i<recoleccions.size();i++){
@@ -40,6 +40,7 @@ public class RecoleccionInteractor implements Recoleccion.Interactor {
 
             recoleccion.put("id",recoleccions.get(i).getId());
             recoleccion.put("id_negocio", recoleccions.get(i).getId_negocio());
+            recoleccion.put("negocio", negocio);
             recoleccion.put("residuo", recoleccions.get(i).getResiduo());
             recoleccion.put("contenedor",recoleccions.get(i).getContenedor());
             recoleccion.put("cantidad",recoleccions.get(i).getCantidad());

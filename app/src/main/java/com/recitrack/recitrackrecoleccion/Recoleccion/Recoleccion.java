@@ -9,7 +9,7 @@ public interface Recoleccion {
         void IrAvance();
     }
     interface Presenter{
-        void GuardarRecoleccion(ArrayList<com.recitrack.recitrackrecoleccion.Models.Recoleccion> recoleccion);
+        void GuardarRecoleccion(String negocio,ArrayList<com.recitrack.recitrackrecoleccion.Models.Recoleccion> recoleccion);
         void NoCargoInfo();
 
         void Error(String error_de_conexion);
@@ -18,6 +18,6 @@ public interface Recoleccion {
 
     }
     interface Interactor{
-        void GuardarRecoleccion(ArrayList<com.recitrack.recitrackrecoleccion.Models.Recoleccion> recoleccion);
+        void GuardarRecoleccion(String negocio,ArrayList<com.recitrack.recitrackrecoleccion.Models.Recoleccion> recoleccion);
     }
 }

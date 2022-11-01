@@ -64,7 +64,7 @@ public class AvanceAdapter extends BaseAdapter {
             if(jsonObject.getInt("uploaded")==0){
                 v.findViewById(R.id.uploaded_danger).setVisibility(View.VISIBLE);
             }
-            if(jsonObject.getInt("uploaded")==1){
+            if(jsonObject.getInt("uploaded")>0){
                 v.findViewById(R.id.uploaded_success).setVisibility(View.VISIBLE);
             }
 

@@ -106,7 +106,7 @@ public class RecoleccionView extends AppCompatActivity implements Recoleccion.Vi
                         alertDialog.setPositiveButton("Sí",
                                 new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int which) {
-                                        presenter.GuardarRecoleccion(recoleccions);
+                                        presenter.GuardarRecoleccion(datosarray[0],recoleccions);
 
                                     }
                                 });
@@ -127,10 +127,10 @@ public class RecoleccionView extends AppCompatActivity implements Recoleccion.Vi
             }
         });
 
-        residuos = (Spinner) findViewById(R.id.residuos);
+        residuos = findViewById(R.id.residuos);
 
 
-        contenedores = (Spinner) findViewById(R.id.contenedores);
+        contenedores =  findViewById(R.id.contenedores);
 
     }
 
@@ -186,7 +186,7 @@ public class RecoleccionView extends AppCompatActivity implements Recoleccion.Vi
         }
 
         String id=metodos.GetUuid();
-        recoleccions.add(new com.recitrack.recitrackrecoleccion.Models.Recoleccion(id,datosarray[1],residuos.getSelectedItem().toString(),contenedores.getSelectedItem().toString(),this.cantidad.getText().toString()));
+        recoleccions.add(new com.recitrack.recitrackrecoleccion.Models.Recoleccion(id,datosarray[1],residuos.getSelectedItemPosition()+"",contenedores.getSelectedItemPosition()+"",this.cantidad.getText().toString()));
         LayoutInflater inflater = getLayoutInflater();
         View item = inflater.inflate(R.layout.item_residuo, null);
 
@@ -198,6 +198,7 @@ public class RecoleccionView extends AppCompatActivity implements Recoleccion.Vi
 
         TextView cantidad=item.findViewById(R.id.cantidad);
         cantidad.setText(this.cantidad.getText());
+
         Log.i("Removiendo","Tamanio:"+recoleccions.size());
         ImageView menu =item.findViewById(R.id.menu);
         menu.setOnClickListener(new View.OnClickListener() {
@@ -211,10 +212,11 @@ public class RecoleccionView extends AppCompatActivity implements Recoleccion.Vi
                     if(recoleccions.get(i).getId().equals(id)){
                         Log.i("Removiendo",id+"   "+recoleccions.get(i).getId());
                         recoleccions.remove(i);
+                        ((ViewManager)item.getParent()).removeView(item);
                     }
                 }
 
-                ((ViewManager)item.getParent()).removeView(item);
+
 
             }
         });
