@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toolbar;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
@@ -43,11 +44,14 @@ public class MenuView extends AppCompatActivity implements NavigationView.OnNavi
     private NavigationView navigationView;
     private TextView nombre;
     MenuPresenter menuPresenter;
+    MenuView menuView;
+    FloatingActionButton floescanear;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         context=this;
+        menuView=this;
         metodos=new Metodos(context);
         //ValidarLogin();
         menuPresenter=new MenuPresenter(this,this);
@@ -55,6 +59,7 @@ public class MenuView extends AppCompatActivity implements NavigationView.OnNavi
         setContentView(binding.getRoot());
         nombre=findViewById(R.id.nombres);
         nombre.setText(metodos.GetNombre());
+        floescanear=findViewById(R.id.floescanear);
         setSupportActionBar(binding.appBarMenuView.toolbar);
 
         DrawerLayout drawer = binding.drawerLayout;
@@ -66,6 +71,8 @@ public class MenuView extends AppCompatActivity implements NavigationView.OnNavi
             Menu nav_Menu = navigationView.getMenu();
             nav_Menu.findItem(R.id.nav_login).setVisible(false);
         }
+
+
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
@@ -76,6 +83,13 @@ public class MenuView extends AppCompatActivity implements NavigationView.OnNavi
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_menu_view);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         //NavigationUI.setupWithNavController(navigationView, navController);
+
+        floescanear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Escanear();
+            }
+        });
 
     }
 
@@ -104,9 +118,8 @@ public class MenuView extends AppCompatActivity implements NavigationView.OnNavi
         }
 
 
-        if(R.id.nav_registrar==id){
-            metodos.Vibrar(metodos.VibrarPush());
-            metodos.PedirPermisoCamara(this);
+        if(R.id.nav_escanear==id){
+            Escanear();
         }
 
         if(R.id.nav_avance==id){
@@ -142,17 +155,17 @@ public class MenuView extends AppCompatActivity implements NavigationView.OnNavi
 
 
 
-    public void ValidarLogin() {
-        if(!metodos.ValidarLogin()){
-            startActivity(new Intent(context, LoginView.class));
-            finish();
-        }
-    }
+
 
     @Override
     public void IrAlLogin() {
         //startActivity(new Intent(context, LoginView.class));
         finish();
         System.exit(0);
+    }
+
+    public void Escanear(){
+        metodos.Vibrar(metodos.VibrarPush());
+        metodos.PedirPermisoCamara(this);
     }
 }

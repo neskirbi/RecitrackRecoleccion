@@ -188,7 +188,7 @@ public class Metodos {
 
     @SuppressLint("Range")
     public String GetNombre(){
-        String nombres="";
+        String nombres="Inicia Sesión";
         try {
             DB base = new DB(context);
             SQLiteDatabase db = base.getWritableDatabase();

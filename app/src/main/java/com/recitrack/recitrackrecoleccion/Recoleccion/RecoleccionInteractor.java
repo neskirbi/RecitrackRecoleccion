@@ -35,6 +35,7 @@ public class RecoleccionInteractor implements Recoleccion.Interactor {
     public void GuardarRecoleccion(String negocio,ArrayList<com.recitrack.recitrackrecoleccion.Models.Recoleccion> recoleccions){
         DB base = new DB(context);
         SQLiteDatabase db = base.getWritableDatabase();
+
         for(int i=0;i<recoleccions.size();i++){
             ContentValues recoleccion = new ContentValues();
 

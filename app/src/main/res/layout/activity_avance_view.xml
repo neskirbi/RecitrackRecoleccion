@@ -11,13 +11,10 @@
         android:layout_height="match_parent">
 
 
-
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-
 
 
             <ListView
@@ -35,19 +32,23 @@
             android:layout_height="60dp"
             app:menu="@menu/bottom_navigation_menu"
             android:layout_gravity="bottom"/>
-        <LinearLayout
+        <FrameLayout
             android:id="@+id/fondo"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:visibility="gone"
-            android:theme="@style/AppTheme"/>
+            android:theme="@style/AppTheme">
 
-        <DatePicker
-            android:id="@+id/datepicker"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical|center_horizontal"
-            android:visibility="gone"/>
+            <DatePicker
+                android:id="@+id/datepicker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal"
+                />
+
+        </FrameLayout>
+
+
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/borrar"

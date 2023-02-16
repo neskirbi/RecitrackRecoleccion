@@ -86,7 +86,6 @@ public class AvanceInteractor implements Avance.AvanceInteractor {
 
             avancePresenter.AbreDialogo();
 
-
             c.moveToFirst();
             while(!c.isAfterLast()){
                 JsonObject jsonObject=new JsonObject();

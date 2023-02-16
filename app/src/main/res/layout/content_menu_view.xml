@@ -34,7 +34,7 @@
             android:layout_gravity="center_horizontal"
             android:textSize="20dp"
             android:textStyle="bold"
-            android:text=""/>
+            android:text="Inicia Sesión"/>
         <TextView
             android:id="@+id/apellidos"
             android:layout_width="wrap_content"
@@ -45,5 +45,18 @@
             android:text=""/>
 
     </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floescanear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
+        android:layout_marginBottom="20dp"
+        app:backgroundTint="#2B2B2B"
+        app:tint="@color/white"
+        app:srcCompat="@drawable/qr"/>
+
+
+
 
 </FrameLayout>

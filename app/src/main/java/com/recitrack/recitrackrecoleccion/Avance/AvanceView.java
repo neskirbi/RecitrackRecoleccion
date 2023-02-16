@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.DatePicker;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -37,7 +38,7 @@ public class AvanceView extends AppCompatActivity implements Avance.AvanceView {
     Metodos metodos;
     DatePicker datePicker;
     BottomNavigationView bottom_navigation;
-    LinearLayout fondo;
+    FrameLayout fondo;
     FloatingActionButton borrar;
     Activity activity;
 
@@ -63,7 +64,7 @@ public class AvanceView extends AppCompatActivity implements Avance.AvanceView {
                     metodos.Vibrar(metodos.VibrarPush());
                     avancePresenter.ObternerAvance(year+"-"+(month+1)+"-"+day);
 
-                    datePicker.setVisibility(View.GONE);
+
                     fondo.setVisibility(View.GONE);
                 }
             });
@@ -89,7 +90,7 @@ public class AvanceView extends AppCompatActivity implements Avance.AvanceView {
 
 
                 if(R.id.fecha==id){
-                    datePicker.setVisibility(View.VISIBLE);
+
                     fondo.setVisibility(View.VISIBLE);
                 }
 
