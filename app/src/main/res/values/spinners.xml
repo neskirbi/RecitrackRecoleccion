@@ -2,16 +2,21 @@
 <resources>
     <string-array name="residuos">
         <item>--Residuos--</item>
-        <item>Organico</item>
-        <item>Vidrio</item>
-        <item>Inorganico</item>
-        <item>Aluminio</item>
+        <item>RSU MEZCLADO</item>
+        <item>RESIDUO ORGÁNICO DE COCINA</item>
+        <item>PALMA/HOJAS/CORTEZ</item>
+        <item>PET</item>
+        <item>PEAD</item>
+        <item>LATAS</item>
+        <item>VIDRIO</item>
+        <item>CARTÓN</item>
+        <item>CHATARRA</item>
     </string-array>
 
     <string-array name="contenedores">
         <item>--Contenedores--</item>
-        <item>Bolsa</item>
-        <item>Tambo</item>
+        <item>BOLSA NEGRA 130 L</item>
+        <item>Tambo 220 L</item>
     </string-array>
 
     <string-array name="values">
@@ -20,6 +25,11 @@
         <item>2</item>
         <item>3</item>
         <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
     </string-array>
 
 </resources>
