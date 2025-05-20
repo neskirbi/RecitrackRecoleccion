@@ -29,7 +29,7 @@ public class DB extends SQLiteOpenHelper {
                 "id text DEFAULT ''," +
                 "id_negocio text DEFAULT ''," +
                 "negocio text DEFAULT ''," +
-                "residuo text DEFAULT ''," +
+                "capacidad text DEFAULT ''," +
                 "contenedor text DEFAULT ''," +
                 "cantidad string DEFAULT '0'," +
                 "uploaded int DEFAULT 0," +
@@ -38,15 +38,7 @@ public class DB extends SQLiteOpenHelper {
 
         sqLiteDatabase.execSQL(Recolecciones);
 
-        Coordenadas= "CREATE TABLE IF NOT EXISTS  coordenadas(" +
-                "id text DEFAULT ''," +
-                "id_recolector text DEFAULT ''," +
-                "lat text DEFAULT ''," +
-                "lon text DEFAULT ''," +
-                "created_at DATETIME DEFAULT ''," +
-                "updated_at DATETIME DEFAULT '')"  ;
 
-        sqLiteDatabase.execSQL(Coordenadas);
     }
 
     @Override

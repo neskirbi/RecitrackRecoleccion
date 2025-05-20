@@ -20,7 +20,7 @@ public class Portada extends AppCompatActivity {
             public void run(){
                 // Cuando pasen los 3 segundos, pasamos a la actividad principal de la aplicación
                 //startActivity(new Intent(getApplicationContext(), LoginView.class));
-                Intent intent = new Intent(getApplicationContext(), MenuView.class);
+                Intent intent = new Intent(getApplicationContext(), LoginView.class);
                 startActivity(intent);
                 finish();
             };

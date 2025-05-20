@@ -9,4 +9,36 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="transparent">#00000000</color>
+
+
+    <!-- Colores primarios -->
+    <color name="colorPrimary">#6200EE</color> <!-- Morado oscuro -->
+    <color name="colorPrimaryDark">#3700B3</color> <!-- Morado más oscuro -->
+    <color name="colorPrimaryLight">#BB86FC</color> <!-- Morado claro -->
+
+    <!-- Colores secundarios -->
+    <color name="colorSecondary">#03DAC6</color> <!-- Turquesa -->
+    <color name="colorSecondaryDark">#018786</color> <!-- Turquesa oscuro -->
+    <color name="colorSecondaryLight">#70EFDE</color> <!-- Turquesa claro -->
+
+    <!-- Colores de fondo -->
+    <color name="background">#FFFFFF</color> <!-- Blanco -->
+    <color name="backgroundDark">#121212</color> <!-- Negro para modo oscuro -->
+
+    <!-- Colores de texto -->
+    <color name="textColorPrimary">#000000</color> <!-- Negro para texto principal -->
+    <color name="textColorSecondary">#757575</color> <!-- Gris para texto secundario -->
+    <color name="textColorOnPrimary">#FFFFFF</color> <!-- Blanco para texto sobre fondo primario -->
+    <color name="textColorOnSecondary">#000000</color> <!-- Negro para texto sobre fondo secundario -->
+
+    <!-- Colores adicionales -->
+    <color name="errorColor">#B00020</color> <!-- Rojo para errores -->
+    <color name="successColor">#4CAF50</color> <!-- Verde para éxito -->
+    <color name="warningColor">#FFC107</color> <!-- Amarillo para advertencias -->
+    <color name="infoColor">#2196F3</color> <!-- Azul para información -->
+
+    <!-- Colores de bordes y divisiones -->
+    <color name="borderColor">#E0E0E0</color> <!-- Gris claro para bordes -->
+    <color name="dividerColor">#BDBDBD</color> <!-- Gris medio para divisiones -->
+
 </resources>

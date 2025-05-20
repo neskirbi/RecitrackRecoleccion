@@ -230,17 +230,7 @@ public class Metodos {
         return id_vehiculo;
     }
 
-    public int NumeroCoordenadas() {
-        DB base = new DB(context);
-        SQLiteDatabase db = base.getWritableDatabase();
-        Cursor c =  db.rawQuery("SELECT * from coordenadas ",null);
-        int filas=c.getCount();
-        db.close();
 
-        return filas;
-
-
-    }
 
     public void AbreDialogo(String text){
         dialog=ProgressDialog.show(context, "",text, true);

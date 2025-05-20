@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="residuos">
-        <item>--Residuos--</item>
-        <item>RSU MEZCLADO</item>
-        <item>RESIDUO ORGÁNICO DE COCINA</item>
-        <item>PALMA/HOJAS/CORTEZ</item>
-        <item>PET</item>
-        <item>PEAD</item>
-        <item>LATAS</item>
-        <item>VIDRIO</item>
-        <item>CARTÓN</item>
-        <item>CHATARRA</item>
+    <string-array name="capacidad">
+        <item>--Capacidad--</item>
+        <item>5Kg</item>
+        <item>10Kg</item>
+        <item>15Kg</item>
+        <item>20Kg</item>
+        <item>25Kg</item>
+        <item>30Kg</item>
+        <item>35Kg</item>
+        <item>40Kg</item>
+        <item>45Kg</item>
+        <item>50Kg</item>
     </string-array>
 
     <string-array name="contenedores">
         <item>--Contenedores--</item>
-        <item>BOLSA NEGRA 130 L</item>
-        <item>Tambo 220 L</item>
+        <item>BOLSA</item>
     </string-array>
 
     <string-array name="values">

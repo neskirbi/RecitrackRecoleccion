@@ -42,7 +42,7 @@ public class RecoleccionInteractor implements Recoleccion.Interactor {
             recoleccion.put("id",recoleccions.get(i).getId());
             recoleccion.put("id_negocio", recoleccions.get(i).getId_negocio());
             recoleccion.put("negocio", negocio);
-            recoleccion.put("residuo", recoleccions.get(i).getResiduo());
+            recoleccion.put("capacidad", recoleccions.get(i).getCapacidad());
             recoleccion.put("contenedor",recoleccions.get(i).getContenedor());
             recoleccion.put("cantidad",recoleccions.get(i).getCantidad());
             recoleccion.put("created_at", metodos.GetDateTime());

@@ -29,7 +29,7 @@ import android.widget.Toast;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.recitrack.recitrackrecoleccion.Avance.AvanceView;
-import com.recitrack.recitrackrecoleccion.Home.Home;
+import com.recitrack.recitrackrecoleccion.Menu.MenuView;
 import com.recitrack.recitrackrecoleccion.Metodos;
 import com.recitrack.recitrackrecoleccion.R;
 
@@ -50,7 +50,7 @@ public class RecoleccionView extends AppCompatActivity implements Recoleccion.Vi
     FrameLayout dialogo;
     BottomNavigationView bottom_navigation;
     LinearLayout lista;
-    Spinner residuos,contenedores;
+    Spinner capacidad,contenedores;
     ArrayList<com.recitrack.recitrackrecoleccion.Models.Recoleccion> recoleccions=new ArrayList<>();
 
 
@@ -70,7 +70,7 @@ public class RecoleccionView extends AppCompatActivity implements Recoleccion.Vi
 
         if(datosarray.length!=2){
             Toast.makeText(context, "Error de QR.", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(this, Home.class));
+            startActivity(new Intent(this, MenuView.class));
         }
         negocio=findViewById(R.id.negocio);
 
@@ -127,7 +127,7 @@ public class RecoleccionView extends AppCompatActivity implements Recoleccion.Vi
             }
         });
 
-        residuos = findViewById(R.id.residuos);
+        capacidad = findViewById(R.id.capacidad);
 
 
         contenedores =  findViewById(R.id.contenedores);
@@ -136,7 +136,7 @@ public class RecoleccionView extends AppCompatActivity implements Recoleccion.Vi
 
     private void CerrarDialogo() {
         dialogo.setVisibility(View.GONE);
-        residuos.setSelection(0);
+        capacidad.setSelection(0);
         contenedores.setSelection(0);
         cantidad.setText("");
     }
@@ -167,7 +167,7 @@ public class RecoleccionView extends AppCompatActivity implements Recoleccion.Vi
 
     public void AgregarResiduo(View view) {
 
-        if(residuos.getSelectedItemPosition()==0){
+        if(capacidad.getSelectedItemPosition()==0){
             Toast.makeText(context, "Debe seleccionar un tipo de residuo.", Toast.LENGTH_SHORT).show();
 
             return;
@@ -186,12 +186,12 @@ public class RecoleccionView extends AppCompatActivity implements Recoleccion.Vi
         }
 
         String id=metodos.GetUuid();
-        recoleccions.add(new com.recitrack.recitrackrecoleccion.Models.Recoleccion(id,datosarray[1],residuos.getSelectedItemPosition()+"",contenedores.getSelectedItemPosition()+"",this.cantidad.getText().toString()));
+        recoleccions.add(new com.recitrack.recitrackrecoleccion.Models.Recoleccion(id,datosarray[1],capacidad.getSelectedItemPosition()+"",contenedores.getSelectedItemPosition()+"",this.cantidad.getText().toString()));
         LayoutInflater inflater = getLayoutInflater();
         View item = inflater.inflate(R.layout.item_residuo, null);
 
         TextView residuo=item.findViewById(R.id.residuo);
-        residuo.setText(residuos.getSelectedItem().toString());
+        residuo.setText(capacidad.getSelectedItem().toString());
 
         TextView contenedor=item.findViewById(R.id.contenedor);
         contenedor.setText(contenedores.getSelectedItem().toString());

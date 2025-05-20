@@ -28,7 +28,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.recitrack.recitrackrecoleccion.Avance.AvanceView;
 import com.recitrack.recitrackrecoleccion.DB.DB;
-import com.recitrack.recitrackrecoleccion.Home.HomeView;
 import com.recitrack.recitrackrecoleccion.Login.LoginView;
 import com.recitrack.recitrackrecoleccion.Metodos;
 import com.recitrack.recitrackrecoleccion.Scaner.Scaner;

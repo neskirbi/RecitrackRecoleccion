@@ -23,7 +23,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.JsonArray;
 import com.recitrack.recitrackrecoleccion.BuildConfig;
 import com.recitrack.recitrackrecoleccion.DB.DB;
-import com.recitrack.recitrackrecoleccion.Home.HomeView;
 import com.recitrack.recitrackrecoleccion.Login.LoginView;
 import com.recitrack.recitrackrecoleccion.Menu.MenuView;
 import com.recitrack.recitrackrecoleccion.Metodos;

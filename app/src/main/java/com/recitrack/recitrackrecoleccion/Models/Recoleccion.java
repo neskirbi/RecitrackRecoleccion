@@ -4,14 +4,14 @@ public class Recoleccion {
 
     String id;
     String id_negocio;
-    String residuo;
+    String capacidad;
     String contenedor;
     String cantidad;
 
-    public Recoleccion(String id, String id_negocio, String residuo, String contenedor, String cantidad) {
+    public Recoleccion(String id, String id_negocio, String capacidad, String contenedor, String cantidad) {
         this.id = id;
         this.id_negocio = id_negocio;
-        this.residuo = residuo;
+        this.capacidad = capacidad;
         this.contenedor = contenedor;
         this.cantidad = cantidad;
     }
@@ -32,12 +32,12 @@ public class Recoleccion {
         this.id_negocio = id_negocio;
     }
 
-    public String getResiduo() {
-        return residuo;
+    public String getCapacidad() {
+        return capacidad;
     }
 
-    public void setResiduo(String residuo) {
-        this.residuo = residuo;
+    public void setCapacidad(String residuo) {
+        this.capacidad = residuo;
     }
 
     public String getContenedor() {

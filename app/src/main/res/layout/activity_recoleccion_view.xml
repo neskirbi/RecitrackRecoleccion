@@ -44,9 +44,6 @@
 
 
 
-
-
-
         <FrameLayout
             android:id="@+id/dialogo"
             android:layout_width="match_parent"
@@ -71,6 +68,9 @@
                     android:textSize="20dp"/>
 
 
+
+
+
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -78,12 +78,12 @@
                     android:padding="2dp"
                     android:background="@drawable/round_border">
                     <Spinner
-                        android:id="@+id/residuos"
+                        android:id="@+id/contenedores"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_marginRight="50dp"
                         android:popupBackground="#fff"
-                        android:entries="@array/residuos"
+                        android:entries="@array/contenedores"
                         />
                     <ImageView
                         android:layout_width="50dp"
@@ -94,7 +94,6 @@
                         app:tint="#6E6E6E" />
                 </FrameLayout>
 
-
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -102,12 +101,12 @@
                     android:padding="2dp"
                     android:background="@drawable/round_border">
                     <Spinner
-                        android:id="@+id/contenedores"
+                        android:id="@+id/capacidad"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_marginRight="50dp"
                         android:popupBackground="#fff"
-                        android:entries="@array/contenedores"
+                        android:entries="@array/capacidad"
                         />
                     <ImageView
                         android:layout_width="50dp"

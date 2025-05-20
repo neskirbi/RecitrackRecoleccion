@@ -81,12 +81,12 @@ public class AvanceInteractor implements Avance.AvanceInteractor {
 
         Cursor c =  db.rawQuery("SELECT * from recolecciones where uploaded = 0 ",null);
 
-
+        c.moveToFirst();
         if(c.getCount()>0){
 
             avancePresenter.AbreDialogo();
 
-            c.moveToFirst();
+
             while(!c.isAfterLast()){
                 JsonObject jsonObject=new JsonObject();
                 jsonObject.addProperty("id_recolector",metodos.GetIdRecolector());
@@ -94,7 +94,7 @@ public class AvanceInteractor implements Avance.AvanceInteractor {
                 jsonObject.addProperty("id_negocio",c.getString(c.getColumnIndex("id_negocio")));
                 jsonObject.addProperty("negocio",c.getString(c.getColumnIndex("negocio")));
                 jsonObject.addProperty("contenedor",c.getString(c.getColumnIndex("contenedor")));
-                jsonObject.addProperty("residuo",c.getString(c.getColumnIndex("residuo")));
+                jsonObject.addProperty("residuo", "1");
                 jsonObject.addProperty("cantidad",c.getString(c.getColumnIndex("cantidad")));
                 jsonObject.addProperty("created_at",c.getString(c.getColumnIndex("created_at")));
                 jsonObject.addProperty("updated_at",c.getString(c.getColumnIndex("updated_at")));
